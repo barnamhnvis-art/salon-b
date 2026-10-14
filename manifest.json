@@ -1,0 +1,35 @@
+{
+  "id": "./",
+  "name": "پنل مدیریت سالن زیبایی لوکس",
+  "short_name": "Salon Manager",
+  "description": "پنل مدیریت نوبت‌های سالن زیبایی لوکس - ثبت و پیگیری قرارها",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#111111",
+  "theme_color": "#c9a227",
+  "lang": "fa",
+  "dir": "rtl",
+  "categories": ["business", "productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "./assets/icons/icon-app1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-app2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-app2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("../fonts/webfonts/Vazirmatn-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("../fonts/webfonts/Vazirmatn-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("../fonts/webfonts/Vazirmatn-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("../fonts/webfonts/Vazirmatn-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-display: swap;
+}
+
+* {
+    font-family: "Vazirmatn", sans-serif;
+
+}
+
