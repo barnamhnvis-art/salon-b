@@ -30,3 +30,94 @@
 
 }
 
+/* ===== پایه ===== */
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#111;
+    color:#eaeaea;
+    min-height:100vh;
+}
+
+/* ===== کارت‌ها ===== */
+.lux-card{
+    background:#1a1a1a;
+    border:1px solid rgba(201,162,39,.2);
+    border-radius:1rem;
+}
+
+/* ===== رنگ‌ها ===== */
+.gold{color:#c9a227}
+
+/* ===== فرم‌ها ===== */
+.form-control,
+.form-select{
+    background:#141414;
+    border:1px solid rgba(255,255,255,.1);
+    color:#eee;
+    border-radius:.7rem;
+}
+.form-control::placeholder{color:#777}
+.form-control:focus,
+.form-select:focus{
+    background:#141414;
+    color:#fff;
+    border-color:#c9a227;
+    box-shadow:none;
+}
+.form-label{color:#bdbdbd;font-size:.85rem}
+
+/* ===== دکمه‌ها ===== */
+.btn-gold{
+    background:#c9a227;
+    color:#111;
+    font-weight:600;
+    border:0;
+}
+.btn-gold:hover{
+    background:#e8d9a0;
+    color:#000;
+}
+
+/* ===== عناصر خاص index ===== */
+.stat-num{
+    font-weight:700;
+    font-size:1.9rem;
+    color:#e8d9a0;
+}
+.list-lux .list-group-item{
+    background:transparent;
+    border-color:rgba(255,255,255,.06);
+    color:#eaeaea;
+}
+.badge-lux{
+    background:rgba(201,162,39,.15);
+    color:#e8d9a0;
+    border:1px solid rgba(201,162,39,.3);
+}
+.time-chip{
+    background:#000;
+    border:1px solid rgba(201,162,39,.25);
+    color:#e8d9a0;
+    border-radius:.5rem;
+    padding:.15rem .55rem;
+    font-size:.8rem;
+    min-width:64px;
+    display:inline-block;
+    text-align:center;
+}
+
+/* ===== عناصر خاص تنظیمات ===== */
+.day-name{
+    color:#e8d9a0;
+    font-weight:600;
+}
+.form-switch .form-check-input{
+    background-color:#333;
+    border-color:rgba(255,255,255,.2);
+    cursor:pointer;
+}
+.form-switch .form-check-input:checked{
+    background-color:#c9a227;
+    border-color:#c9a227;
+}
+.form-switch .form-check-input:focus{box-shadow:none}
