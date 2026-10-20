@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>تأیید شماره موبایل | سالن زیبایی لوکس</title>
+
+    <meta name="theme-color" content="#c9a227">
+    <meta name="description" content="تأیید شماره موبایل برای ورود به سالن زیبایی لوکس">
+    <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Salon Manager">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="manifest" href="./manifest.json">
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100 py-4">
+    <div style="max-width: 420px; width: 100%;">
+
+        <!-- آیکون و عنوان -->
+        <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center justify-content-center mb-3"
+                 style="width:64px;height:64px;border-radius:50%;background:#1a1a1a;border:1px solid rgba(201,162,39,.35);">
+                <i class="bi bi-shield-lock gold fs-3"></i>
+            </div>
+            <h4 class="fw-bold text-white mb-1">کد تأیید را وارد کنید</h4>
+            <small class="text-secondary">
+                کد ۵ رقمی به شماره
+                <span class="gold fw-semibold">۰۹۱۲۱۲۳۴۵۶۷</span>
+                ارسال شد
+            </small>
+        </div>
+        <form>
+            <!-- کارت فرم -->
+            <div class="lux-card p-4">
+
+
+
+                    <!-- کد تأیید -->
+                    <div class="mb-3">
+                        <label class="form-label">کد تأیید</label>
+                        <input type="text"
+                               class="form-control text-center fw-bold"
+                               placeholder="— — — — —"
+                               inputmode="numeric"
+                               maxlength="5"
+                               autocomplete="one-time-code"
+                               style="letter-spacing:.6rem; font-size:1.2rem;">
+                    </div>
+
+
+
+
+                    <!-- ارسال مجدد -->
+                    <div class="mb-4 mt-5 d-flex justify-content-between">
+                        <small class="text-secondary">
+                            <a href="./login.html" class="gold text-decoration-none fw-semibold">تغییر شماره</a>
+                        </small>
+                        <small>
+                            <a href="#" class="gold text-decoration-none fw-semibold">ارسال مجددکد</a>
+                        </small>
+                    </div>
+
+
+                <button type="submit" class="btn btn-gold w-100 ">
+                    <i class="bi bi-check2-circle me-1"></i> تأیید و ورود
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- نسخه -->
+        <div class="app-version text-center mt-4">
+            نسخه <span id="appVersion"></span>
+        </div>
+
+    </div>
+</div>
+
+<script src="./app-version.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

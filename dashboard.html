@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>داشبورد | سالن زیبایی لوکس</title>
+    <meta name="theme-color" content="#c9a227">
+    <meta name="description" content="داشبورد مشتری سالن زیبایی لوکس">
+    <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Salon Manager">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="manifest" href="./manifest.json">
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container py-4 py-md-5" style="max-width: 720px;">
+
+    <!-- هدر: خوش‌آمدگویی + دکمه خروج -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h4 text-white mb-1">سلام، سارا 👋</h1>
+            <small class="text-secondary">خوش آمدید به سالن زیبایی لوکس</small>
+        </div>
+        <a href="./login.html" class="btn btn-dark" title="خروج">
+            <i class="bi bi-box-arrow-right gold"></i>
+        </a>
+    </div>
+
+    <!-- کارت نوبت بعدی -->
+    <h6 class="fw-bold text-white mb-3">
+        <i class="bi bi-calendar2-check gold me-1"></i> نوبت بعدی شما
+    </h6>
+    <div class="lux-card p-4 mb-4">
+        <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="avatar">س</span>
+            <div class="flex-grow-1">
+                <div class="fw-semibold text-white">رنگ مو</div>
+                <small class="text-secondary">با سارا احمدی</small>
+            </div>
+            <span class="badge badge-lux rounded-pill">تأیید شده</span>
+        </div>
+
+        <div class="row g-2 mb-3">
+            <div class="col-6">
+                <div class="lux-card p-2 text-center">
+                    <small class="form-label d-block mb-0">
+                        <i class="bi bi-calendar3 gold me-1"></i> تاریخ
+                    </small>
+                    <div class="text-white small fw-semibold">شنبه ۶ مهر</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="lux-card p-2 text-center">
+                    <small class="form-label d-block mb-0">
+                        <i class="bi bi-clock gold me-1"></i> ساعت
+                    </small>
+                    <div class="text-white small fw-semibold">۱۰:۰۰</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="button" class="btn btn-gold flex-fill">
+                <i class="bi bi-telephone me-1"></i> تماس با سالن
+            </button>
+            <button type="button" class="btn btn-danger flex-fill">
+                <i class="bi bi-x-circle me-1"></i> لغو نوبت
+            </button>
+        </div>
+    </div>
+
+    <!-- دکمه رزرو جدید -->
+    <a href="./book.html" class="btn btn-gold w-100 mb-4">
+        <i class="bi bi-plus-circle me-1"></i> رزرو نوبت جدید
+    </a>
+
+    <!-- تاریخچه نوبت‌ها -->
+    <h6 class="fw-bold text-white mb-3">
+        <i class="bi bi-clock-history gold me-1"></i> نوبت‌های قبلی
+    </h6>
+    <div class="lux-card overflow-hidden">
+        <ul class="list-group list-group-flush list-lux p-0">
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                <span class="time-chip">۲ شهریور</span>
+                <div class="flex-grow-1">
+                    <div class="fw-semibold">کوتاهی مو</div>
+                    <small class="text-secondary">ساعت ۱۴:۰۰</small>
+                </div>
+                <span class="badge badge-lux rounded-pill">انجام شده</span>
+            </li>
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                <span class="time-chip">۱۸ مرداد</span>
+                <div class="flex-grow-1">
+                    <div class="fw-semibold">میکاپ</div>
+                    <small class="text-secondary">ساعت ۱۱:۳۰</small>
+                </div>
+                <span class="badge badge-lux rounded-pill">انجام شده</span>
+            </li>
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3">
+                <span class="time-chip">۵ مرداد</span>
+                <div class="flex-grow-1">
+                    <div class="fw-semibold">رنگ مو</div>
+                    <small class="text-secondary">ساعت ۱۶:۰۰</small>
+                </div>
+                <span class="badge badge-lux rounded-pill">انجام شده</span>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- نسخه -->
+    <div class="app-version text-center mt-5">
+        نسخه <span id="appVersion"></span>
+    </div>
+
+</div>
+
+<script src="./app-version.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

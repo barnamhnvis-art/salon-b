@@ -16,6 +16,8 @@ console.log("[SW] Service Worker بارگذاری شد (بدون کش)");
    ============================================ */
 self.addEventListener("install", (event) => {
     console.log("[SW] رویداد install اجرا شد");
+
+    /* اجبار به فعال‌سازی فوری بدون انتظار */
     self.skipWaiting();
 });
 
@@ -27,6 +29,7 @@ self.addEventListener("activate", (event) => {
     console.log("[SW] رویداد activate اجرا شد");
 
     event.waitUntil(
+        /* همه کش‌های قدیمی را پاک کن (اگر از قبل وجود دارند) */
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
@@ -37,6 +40,7 @@ self.addEventListener("activate", (event) => {
         })
     );
 
+    /* کنترل فوری همه تب‌ها */
     self.clients.claim();
 });
 
@@ -47,7 +51,7 @@ self.addEventListener("activate", (event) => {
    به شبکه می‌رود.
    ============================================ */
 self.addEventListener("fetch", (event) => {
-
+    /* فقط درخواست‌های GET را مدیریت کن */
     if (event.request.method !== "GET") {
         return;
     }
@@ -55,6 +59,7 @@ self.addEventListener("fetch", (event) => {
     /* درخواست را مستقیماً به شبکه بفرست (بدون کش) */
     event.respondWith(
         fetch(event.request).catch((error) => {
+            /* اگر شبکه در دسترس نبود، خطا را لاگ کن */
             console.warn("[SW] خطا در واکشی:", event.request.url, error);
             throw error;
         })

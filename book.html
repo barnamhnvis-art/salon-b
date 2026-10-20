@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>رزرو نوبت | سالن زیبایی لوکس</title>
+
+    <meta name="theme-color" content="#c9a227">
+    <meta name="description" content="رزرو نوبت آنلاین سالن زیبایی لوکس">
+    <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Salon Manager">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="manifest" href="./manifest.json">
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container py-4 py-md-5" style="max-width: 720px;">
+
+    <!-- هدر: بازگشت + عنوان -->
+    <div class="d-flex align-items-center gap-3 mb-4">
+        <a href="./dashboard.html" class="btn btn-dark" title="بازگشت">
+            <i class="bi bi-arrow-right gold"></i>
+        </a>
+        <div>
+            <h1 class="h4 text-white mb-0">رزرو نوبت جدید</h1>
+            <small class="text-secondary">خدمت و زمان مورد نظر را انتخاب کنید</small>
+        </div>
+    </div>
+
+    <form>
+
+        <!-- ============================================ -->
+        <!-- ۱) انتخاب خدمت -->
+        <!-- ============================================ -->
+        <h6 class="fw-bold text-white mb-3">
+            <i class="bi bi-scissors gold me-1"></i> انتخاب خدمت
+        </h6>
+        <div class="lux-card p-3 mb-4">
+
+            <div class="form-check p-3 mb-2 border-bottom border-secondary border-opacity-25">
+                <input class="form-check-input" type="radio" name="service" id="service1" checked>
+                <label class="form-check-label w-100" for="service1">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold text-white">رنگ مو</div>
+                            <small class="text-secondary">۹۰ دقیقه</small>
+                        </div>
+                        <span class="gold fw-semibold">۸۵۰,۰۰۰ تومان</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="form-check p-3 mb-2 border-bottom border-secondary border-opacity-25">
+                <input class="form-check-input" type="radio" name="service" id="service2">
+                <label class="form-check-label w-100" for="service2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold text-white">کوتاهی مو</div>
+                            <small class="text-secondary">۴۵ دقیقه</small>
+                        </div>
+                        <span class="gold fw-semibold">۲۵۰,۰۰۰ تومان</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="form-check p-3 mb-2 border-bottom border-secondary border-opacity-25">
+                <input class="form-check-input" type="radio" name="service" id="service3">
+                <label class="form-check-label w-100" for="service3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold text-white">میکاپ</div>
+                            <small class="text-secondary">۱۲۰ دقیقه</small>
+                        </div>
+                        <span class="gold fw-semibold">۱,۲۰۰,۰۰۰ تومان</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="form-check p-3">
+                <input class="form-check-input" type="radio" name="service" id="service4">
+                <label class="form-check-label w-100" for="service4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold text-white">ناخن</div>
+                            <small class="text-secondary">۶۰ دقیقه</small>
+                        </div>
+                        <span class="gold fw-semibold">۳۰۰,۰۰۰ تومان</span>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+
+        <!-- ============================================ -->
+        <!-- ۲) انتخاب تاریخ -->
+        <!-- ============================================ -->
+        <h6 class="fw-bold text-white mb-3">
+            <i class="bi bi-calendar3 gold me-1"></i> انتخاب تاریخ
+        </h6>
+        <div class="lux-card p-4 mb-4">
+            <label class="form-label">تاریخ مورد نظر</label>
+            <input type="text" class="form-control" placeholder="مثلاً ۶ مهر">
+            <small class="text-secondary d-block mt-2">
+                <i class="bi bi-info-circle me-1"></i>
+                سالن شنبه تا پنجشنبه باز است
+            </small>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- ۳) انتخاب ساعت -->
+        <!-- ============================================ -->
+        <h6 class="fw-bold text-white mb-3">
+            <i class="bi bi-clock gold me-1"></i> انتخاب ساعت
+        </h6>
+        <div class="lux-card p-3 mb-4">
+
+            <div class="row g-2">
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t1" checked>
+                    <label class="btn btn-dark w-100" for="t1">۹:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t2">
+                    <label class="btn btn-dark w-100" for="t2">۱۰:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t3">
+                    <label class="btn btn-dark w-100" for="t3">۱۱:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t4">
+                    <label class="btn btn-dark w-100" for="t4">۱۲:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t5">
+                    <label class="btn btn-dark w-100" for="t5">۱۴:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t6">
+                    <label class="btn btn-dark w-100" for="t6">۱۵:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t7">
+                    <label class="btn btn-dark w-100" for="t7">۱۶:۰۰</label>
+                </div>
+
+                <div class="col-4 col-md-3">
+                    <input type="radio" class="btn-check" name="time" id="t8">
+                    <label class="btn btn-dark w-100" for="t8">۱۸:۰۰</label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================================ -->
+        <!-- ۴) دکمه تأیید -->
+        <!-- ============================================ -->
+        <button type="submit" class="btn btn-gold w-100">
+            <i class="bi bi-check2-circle me-1"></i> ثبت رزرو
+        </button>
+
+    </form>
+
+    <!-- نسخه -->
+    <div class="app-version text-center mt-5">
+        نسخه <span id="appVersion"></span>
+    </div>
+
+</div>
+
+<script src="./app-version.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

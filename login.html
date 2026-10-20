@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ورود | سالن زیبایی لوکس</title>
+
+    <meta name="theme-color" content="#c9a227">
+    <meta name="description" content="ورود به حساب کاربری سالن زیبایی لوکس">
+    <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Salon Manager">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="manifest" href="./manifest.json">
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100 py-4">
+    <div style="max-width: 420px; width: 100%;">
+
+        <!-- لوگو و عنوان -->
+        <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-gem gold fs-4"></i>
+            </div>
+            <h4 class="fw-bold text-white mb-1">خوش آمدید</h4>
+            <small class="text-secondary">برای رزرو نوبت وارد شوید</small>
+        </div>
+
+        <!-- کارت فرم -->
+        <div class="lux-card p-4">
+
+            <form>
+
+                <!-- شماره موبایل -->
+                <div class="mb-3">
+                    <label class="form-label">شماره موبایل</label>
+                        <input type="tel"
+                               class="form-control text-end p-2"
+                               placeholder="۰۹۱۲ ۱۲۳ ۴۵۶۷"
+                               inputmode="numeric"
+                               autocomplete="tel">
+
+                </div>
+
+                <!-- رمز عبور -->
+                <div class="mb-3">
+                    <label class="form-label">رمز عبور</label>
+
+                        <input type="password"
+                               class="form-control p-2"
+                               placeholder="••••••••"
+                               autocomplete="current-password">
+
+                </div>
+
+                <!-- یادآوری / فراموشی -->
+                <div class="mb-4">
+                    <a href="#" class="text-decoration-none small gold">فراموشی رمز؟</a>
+                </div>
+
+                <!-- دکمه ورود -->
+                <button type="submit" class="btn btn-gold w-100">
+                    <i class="bi bi-box-arrow-in-left me-1"></i> ورود
+                </button>
+
+            </form>
+
+        </div>
+        <p class="text-center text-secondary small mt-4 mb-0">
+            حساب ندارید؟
+            <a href="./register.html" class="gold text-decoration-none fw-semibold">ثبت‌نام کنید</a>
+        </p>
+
+        <!-- نسخه -->
+        <div class="app-version text-center mt-4">
+            نسخه <span id="appVersion"></span>
+        </div>
+
+    </div>
+</div>
+
+<script src="./app-version.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>تنظیمات سالن</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/icons/bootstrap-icons.min.css">
+</head>
+<body>
+
+<div class="container py-4 py-md-5" style="max-width: 920px;">
+
+    <!-- هدر -->
+    <div class="text-center mb-5">
+        <div class="d-inline-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-gear gold fs-5"></i>
+            <span class="gold fw-semibold">تنظیمات سالن</span>
+        </div>
+        <h3 class="fw-bold mb-1 text-white">پیکربندی خدمات و ساعات کاری</h3>
+        <small class="text-secondary">مدیریت کامل تنظیمات پنل</small>
+    </div>
+
+    <!-- بخش خدمات -->
+    <h6 class="fw-bold text-white mb-3">
+        <i class="bi bi-scissors gold me-1"></i> مدیریت خدمات
+    </h6>
+    <div class="lux-card p-4 mb-5">
+
+        <div class="row g-3 align-items-end mb-3">
+            <div class="col-12 col-md-4">
+                <label class="form-label">نام خدمت جدید</label>
+                <input type="text" class="form-control" placeholder="مثلاً ناخن">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">مدت زمان (دقیقه)</label>
+                <input type="number" class="form-control" placeholder="۶۰">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">هزینه (تومان)</label>
+                <input type="number" class="form-control" placeholder="۳۰۰۰۰۰">
+            </div>
+            <div class="col-12 col-md-2">
+                <button type="button" class="btn btn-gold w-100">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <label class="form-label">نام خدمت</label>
+                <input type="text" class="form-control" value="رنگ مو">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">مدت زمان (دقیقه)</label>
+                <input type="number" class="form-control" value="90">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">هزینه (تومان)</label>
+                <input type="number" class="form-control" value="850000">
+            </div>
+            <div class="col-12 col-md-2">
+                <button type="button" class="btn btn-danger w-100">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-end mb-3">
+            <div class="col-12 col-md-4">
+                <label class="form-label">نام خدمت</label>
+                <input type="text" class="form-control" value="کوتاهی مو">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">مدت زمان (دقیقه)</label>
+                <input type="number" class="form-control" value="45">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">هزینه (تومان)</label>
+                <input type="number" class="form-control" value="250000">
+            </div>
+            <div class="col-12 col-md-2">
+                <button type="button" class="btn btn-danger w-100">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-end mb-3">
+            <div class="col-12 col-md-4">
+                <label class="form-label">نام خدمت</label>
+                <input type="text" class="form-control" value="میکاپ">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">مدت زمان (دقیقه)</label>
+                <input type="number" class="form-control" value="120">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label">هزینه (تومان)</label>
+                <input type="number" class="form-control" value="1200000">
+            </div>
+            <div class="col-12 col-md-2">
+                <button type="button" class="btn btn-danger w-100">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- بخش ساعات کاری -->
+    <h6 class="fw-bold text-white mb-3">
+        <i class="bi bi-clock-history gold me-1"></i> ساعات کاری هفته
+    </h6>
+    <div class="lux-card p-4 mb-5">
+
+        <!-- شنبه -->
+        <div class="row g-3 align-items-center border-bottom border-secondary border-opacity-25 py-3">
+            <div class="col-6 col-md-2"><span class="day-name">شنبه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox" checked>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="09:00">
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="21:00">
+            </div>
+        </div>
+
+        <!-- یکشنبه -->
+        <div class="row g-3 align-items-center border-bottom border-secondary border-opacity-25 py-3">
+            <div class="col-6 col-md-2"><span class="day-name">یکشنبه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox" checked>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="09:00">
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="21:00">
+            </div>
+        </div>
+
+        <!-- دوشنبه -->
+        <div class="row g-3 align-items-center border-bottom border-secondary border-opacity-25 py-3">
+            <div class="col-6 col-md-2"><span class="day-name">دوشنبه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox" checked>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="09:00">
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="21:00">
+            </div>
+        </div>
+
+        <!-- سه‌شنبه -->
+        <div class="row g-3 align-items-center border-bottom border-secondary border-opacity-25 py-3">
+            <div class="col-6 col-md-2"><span class="day-name">سه‌شنبه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox" checked>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="09:00">
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="21:00">
+            </div>
+        </div>
+
+        <!-- چهارشنبه -->
+        <div class="row g-3 align-items-center border-bottom border-secondary border-opacity-25 py-3">
+            <div class="col-6 col-md-2"><span class="day-name">چهارشنبه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox" checked>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="09:00">
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="21:00">
+            </div>
+        </div>
+
+        <!-- پنجشنبه -->
+        <div class="row g-3 align-items-center border-bottom border-secondary border-opacity-25 py-3">
+            <div class="col-6 col-md-2"><span class="day-name">پنجشنبه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox" checked>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="10:00">
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="23:00">
+            </div>
+        </div>
+
+        <!-- جمعه -->
+        <div class="row g-3 align-items-center py-3">
+            <div class="col-6 col-md-2"><span class="day-name">جمعه</span></div>
+            <div class="col-6 col-md-2 text-md-center">
+                <div class="form-check form-switch d-inline-block">
+                    <input class="form-check-input" type="checkbox">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">از ساعت</label>
+                <input type="time" class="form-control" value="10:00" >
+            </div>
+            <div class="col-6 col-md-4">
+                <label class="form-label">تا ساعت</label>
+                <input type="time" class="form-control" value="18:00" >
+            </div>
+        </div>
+
+    </div>
+
+    <!-- دکمه ذخیره -->
+    <button type="submit" class="btn btn-gold w-100">
+        <i class="bi bi-check2-circle me-1"></i> ذخیره تنظیمات
+    </button>
+
+</div>
+
+</body>
+</html>

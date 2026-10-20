@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#c9a227">
 
     <!-- توضیح اپ (برای موتورهای جستجو و دیالوگ نصب) -->
-    <meta name="description" content="پنل مدیریت نوبت‌های سالن زیبایی لوکس">
+    <meta name="description" content="پنل مدیریت نوبت‌های سالن زیبایی">
 
     <!-- آیکون برای iOS (Safari) -->
     <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
@@ -33,108 +33,71 @@
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
-    <style>
-        body{
-            font-family:'Vazirmatn',sans-serif;
-            background:#111;
-            color:#eaeaea;
-            min-height:100vh;
-        }
-        .lux-card{
-            background:#1a1a1a;
-            border:1px solid rgba(201,162,39,.2);
-            border-radius:1rem;
-        }
-        .gold{color:#c9a227}
-        .stat-num{
-            font-weight:700;
-            font-size:1.9rem;
-            color:#e8d9a0;
-        }
-        .list-lux .list-group-item{
-            background:transparent;
-            border-color:rgba(255,255,255,.06);
-            color:#eaeaea;
-            padding:.9rem 1.1rem;
-        }
-        .badge-lux{
-            background:rgba(201,162,39,.15);
-            color:#e8d9a0;
-            border:1px solid rgba(201,162,39,.3);
-        }
-        .time-chip{
-            background:#000;
-            border:1px solid rgba(201,162,39,.25);
-            color:#e8d9a0;
-            border-radius:.5rem;
-            padding:.15rem .55rem;
-            font-size:.8rem;
-            min-width:64px;
-            display:inline-block;
-            text-align:center;
-        }
-        .form-control{
-            background:#141414;
-            border:1px solid rgba(255,255,255,.1);
-            color:#eee;
-            border-radius:.7rem;
-        }
-        .form-control::placeholder{color:#777}
-        .form-control:focus{
-            background:#141414;
-            color:#fff;
-            border-color:#c9a227;
-            box-shadow:none;
-        }
-        .form-label{color:#bdbdbd;font-size:.85rem}
-        .btn-gold{
-            background:#c9a227;
-            color:#111;
-            font-weight:600;
-            border:0;
-            border-radius:.7rem;
-            padding:.75rem;
-        }
-        .btn-gold:hover{
-            background:#e8d9a0;
-            color:#000;
-        }
-        .avatar{
-            width:38px;height:38px;
-            border-radius:50%;
-            display:grid;place-items:center;
-            background:#242424;
-            border:1px solid rgba(201,162,39,.35);
-            color:#e8d9a0;
-            font-weight:600;
-            font-size:.85rem;
-        }
-    </style>
 </head>
 <body>
 <div class="container py-4 py-md-5" style="max-width: 920px;">
-
-    <div class="text-center mb-5">
-        <div class="d-inline-flex align-items-center gap-2 mb-2">
-            <i class="bi bi-gem gold fs-5"></i>
-            <span class="gold fw-semibold">سالن زیبایی لوکس</span>
-            <i class="bi bi-gem gold fs-5"></i>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h1 class="h4 text-white">پنل مدیریت نوبتها</h1>
+            <h2 class="h5 fw-bold mb-1 text-secondary ">امروز، شنبه ۶ مهر</h2>
         </div>
-        <h3 class="fw-bold mb-1 text-white">امروز، شنبه ۶ مهر</h3>
-        <small class="text-secondary">پنل مدیریت نوبت‌ها</small>
-        <br>
-        <button
-                type="button"
-                id="installAppBtn"
-                class="btn btn-dark mt-3"
-                hidden
-        >
-            <i class="bi bi-download"></i>
-            نصب برنامه
-        </button>
-
+        <div>
+            <button type="button" id="installAppBtn" class="btn btn-dark" hidden>
+                <i class="bi bi-download gold"></i> نصب برنامه
+            </button>
+            <a href="./settings.html"
+               class="btn btn-dark"
+               title="تنظیمات">
+                <i class="bi bi-gear gold"></i>
+            </a>
+        </div>
     </div>
 
+    <!-- ============================================ -->
+    <!-- مودال جزئیات مشتری -->
+    <!-- ============================================ -->
+    <div class="modal fade" id="customerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content lux-card">
+
+                <!-- هدر مودال: اسم مشتری + ساعت -->
+                <div class="modal-header d-block border-0 pb-2">
+                    <div class="d-flex justify-content-between align-items-center gap-3">
+                        <h5 class="fw-bold text-white mb-0" id="modalName"></h5>
+                        <span class="time-chip py-1" id="modalTime"></span>
+                    </div>
+                </div>
+
+                <!-- بدنه: خدمات + شماره تماس -->
+                <div class="modal-body pt-2">
+                    <div class="p-3">
+                        <h5 class="mb-1 gold mb-2">
+                            خدمات:
+                        </h5>
+                        <div class="text-white" id="modalService"></div>
+                    </div>
+                    <hr class="gold">
+                    <div class="p-3 ">
+                        <h5 class="mb-1 gold mb-2">
+                            شماره تماس:
+                        </h5>
+                        <div class="text-white" id="modalPhone"></div>
+                    </div>
+                </div>
+
+                <!-- فوتر: دکمه‌ها -->
+                <div class="modal-footer border-0 d-flex gap-2">
+                    <button type="button" class="btn btn-gold py-2 flex-fill">
+                        <i class="bi bi-check2-circle me-1"></i> تأیید نوبت
+                    </button>
+                    <button type="button" class="btn btn-danger py-2 flex-fill" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i> لغو نوبت
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- کارت‌های آماری -->
     <div class="row g-3 mb-5">
         <div class="col-6 col-md-3">
@@ -172,28 +135,34 @@
         <i class="bi bi-sun gold me-1"></i> قرارهای امروز
     </h6>
     <div class="lux-card overflow-hidden mb-5">
-        <ul class="list-group list-group-flush list-lux">
-            <li class="list-group-item d-flex align-items-center gap-3">
+        <!-- قرارهای امروز -->
+        <ul class="list-group list-group-flush list-lux p-0">
+            <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                data-name="سارا احمدی" data-time="۹:۰۰" data-service="رنگ مو" data-phone="۰۹۱۲۱۲۳۴۵۶۷">
                 <span class="time-chip">۹:۰۰</span>
-                <span class="avatar">س</span>
                 <div class="flex-grow-1">
                     <div class="fw-semibold">سارا احمدی</div>
                     <small class="text-secondary">رنگ مو</small>
                 </div>
                 <span class="badge badge-lux rounded-pill">تأیید شده</span>
             </li>
-            <li class="list-group-item d-flex align-items-center gap-3">
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                data-name="مریم رضایی" data-time="۱۰:۰۰" data-service="کوتاهی مو" data-phone="۰۹۱۳۲۲۲۳۳۳۳">
                 <span class="time-chip">۱۰:۰۰</span>
-                <span class="avatar">م</span>
                 <div class="flex-grow-1">
                     <div class="fw-semibold">مریم رضایی</div>
                     <small class="text-secondary">کوتاهی مو</small>
                 </div>
                 <span class="badge badge-lux rounded-pill">تأیید شده</span>
             </li>
-            <li class="list-group-item d-flex align-items-center gap-3">
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                data-name="فاطمه محمدی" data-time="۱۲:۰۰" data-service="میکاپ" data-phone="۰۹۱۴۵۵۵۶۶۶۶">
                 <span class="time-chip">۱۲:۰۰</span>
-                <span class="avatar">ف</span>
                 <div class="flex-grow-1">
                     <div class="fw-semibold">فاطمه محمدی</div>
                     <small class="text-secondary">میکاپ</small>
@@ -208,30 +177,39 @@
         <i class="bi bi-calendar-week gold me-1"></i> قرارهای هفته
     </h6>
     <div class="lux-card overflow-hidden mb-5">
-        <ul class="list-group list-group-flush list-lux">
-            <li class="list-group-item d-flex align-items-center gap-3">
+        <!-- قرارهای هفته -->
+        <ul class="list-group list-group-flush list-lux p-0">
+            <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                data-name="مریم احمدی" data-time="شنبه ۱" data-service="میکاپ" data-phone="۰۹۱۵۱۱۱۲۲۲۲">
                 <span class="time-chip">شنبه ۱</span>
-                <span class="avatar">م</span>
                 <div class="flex-grow-1">
                     <div class="fw-semibold">مریم احمدی</div>
                     <small class="text-secondary">میکاپ</small>
                 </div>
+                <span class="badge badge-lux rounded-pill">تأیید شده</span>
             </li>
-            <li class="list-group-item d-flex align-items-center gap-3">
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                data-name="زهرا کریمی" data-time="یکشنبه ۳" data-service="رنگ مو" data-phone="۰۹۱۶۳۳۳۴۴۴۴">
                 <span class="time-chip">یکشنبه ۳</span>
-                <span class="avatar">ز</span>
                 <div class="flex-grow-1">
                     <div class="fw-semibold">زهرا کریمی</div>
                     <small class="text-secondary">رنگ مو</small>
                 </div>
+                <span class="badge badge-lux rounded-pill">تأیید شده</span>
             </li>
-            <li class="list-group-item d-flex align-items-center gap-3">
+
+            <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                data-name="نگار موسوی" data-time="دوشنبه ۱۱" data-service="ناخن" data-phone="۰۹۱۷۷۷۷۸۸۸۸">
                 <span class="time-chip">دوشنبه ۱۱</span>
-                <span class="avatar">ن</span>
                 <div class="flex-grow-1">
                     <div class="fw-semibold">نگار موسوی</div>
                     <small class="text-secondary">ناخن</small>
                 </div>
+                <span class="badge badge-lux rounded-pill">تأیید شده</span>
             </li>
         </ul>
     </div>
@@ -246,6 +224,10 @@
                     <input type="text" class="form-control" placeholder="مثلاً سارا احمدی">
                 </div>
                 <div class="col-12 col-md-6">
+                    <label class="form-label">شماره تلفن</label>
+                    <input type="text" class="form-control" placeholder="09123456789">
+                </div>
+                <div class="col-12 col-md-6">
                     <label class="form-label">خدمات</label>
                     <input type="text" class="form-control" placeholder="مثلاً رنگ مو">
                 </div>
@@ -257,7 +239,7 @@
                     <label class="form-label">ساعت</label>
                     <input type="text" class="form-control" placeholder="۱۰:۰۰">
                 </div>
-                <div class="col-12 mt-2">
+                <div class="col-12 mt-4">
                     <button type="submit" class="btn btn-gold w-100">
                         <i class="bi bi-check2-circle me-1"></i> ثبت نوبت
                     </button>
@@ -270,6 +252,24 @@
     </div>
 </div>
 <script src="./app-version.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script>
+    /* ============================================
+       پر کردن مودال با اطلاعات مشتری کلیک‌شده
+       ============================================ */
+    const customerModal = document.getElementById('customerModal');
+
+    customerModal.addEventListener('show.bs.modal', (event) => {
+        const trigger = event.relatedTarget;
+        if (!trigger) return;
+
+        document.getElementById('modalName').textContent    = trigger.dataset.name;
+        document.getElementById('modalTime').textContent    = trigger.dataset.time;
+        document.getElementById('modalService').textContent = trigger.dataset.service;
+        document.getElementById('modalPhone').textContent   = trigger.dataset.phone;
+        document.getElementById('modalAvatar').textContent  = trigger.dataset.name.charAt(0);
+    });
+</script>
 <script>
 
     /* متغیری برای نگهداری درخواست نصب مرورگر ایجاد می‌کنیم. */
