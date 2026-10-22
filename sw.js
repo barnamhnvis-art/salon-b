@@ -44,6 +44,7 @@ self.addEventListener("activate", (event) => {
     self.clients.claim();
 });
 
+
 /* ============================================
    رویداد واکشی (Fetch)
    این event برای نصب‌پذیری PWA الزامی است.
