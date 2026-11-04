@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="./assets/icons/icon-app1.png">
     <!-- ============================================
      تنظیمات PWA و موبایل
+
      ============================================ -->
 
     <!-- رنگ نوار وضعیت در Android Chrome -->
@@ -359,6 +360,27 @@
         });
     } else {
         console.warn("[App] این مرورگر از Service Worker پشتیبانی نمی‌کند");
+    }
+</script>
+<script>
+    // ============================================
+    // مدیریت دکمه Back گوشی (فقط در اپ Capacitor)
+    // ============================================
+    if (window.Capacitor) {
+        // @capacitor/app رو از Capacitor می‌گیریم
+        const { App } = window.Capacitor.Plugins;
+
+        if (App) {
+            App.addListener('backButton', ({ canGoBack }) => {
+                if (canGoBack) {
+                    // اگه صفحه‌ای برای برگشت هست، برگرد
+                    window.history.back();
+                } else {
+                    // اگه توی صفحه اصلی هستیم، اپ رو ببند
+                    App.exitApp();
+                }
+            });
+        }
     }
 </script>
 </body>
