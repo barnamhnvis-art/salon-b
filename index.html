@@ -341,25 +341,33 @@
 
 </script>
 <script>
-    /* ============================================
-       ثبت Service Worker
-       ============================================ */
+    // ============================================
+    // مدیریت Service Worker
+    // ============================================
     if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-            navigator.serviceWorker
-                .register("./sw.js")
-                .then((registration) => {
-                    console.log(
-                        "[App] Service Worker با موفقیت ثبت شد. Scope:",
-                        registration.scope
-                    );
-                })
-                .catch((error) => {
-                    console.error("[App] خطا در ثبت Service Worker:", error);
-                });
-        });
-    } else {
-        console.warn("[App] این مرورگر از Service Worker پشتیبانی نمی‌کند");
+        // اگه داخل اپ Capacitor هستیم، Service Worker رو ثبت نکن
+        if (window.Capacitor) {
+            console.log("[App] داخل Capacitor هستیم، Service Worker ثبت نمی‌شود.");
+            // اگه قبلاً ثبت شده، حذفش کن
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                    console.log("[App] Service Worker قدیمی حذف شد.");
+                }
+            });
+        } else {
+            // فقط در مرورگر عادی Service Worker رو ثبت کن
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("./sw.js")
+                    .then((registration) => {
+                        console.log("[App] Service Worker در مرورگر ثبت شد.");
+                    })
+                    .catch((error) => {
+                        console.error("[App] خطا در ثبت Service Worker:", error);
+                    });
+            });
+        }
     }
 </script>
 <script>
