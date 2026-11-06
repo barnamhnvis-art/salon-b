@@ -41,7 +41,7 @@
 <div class="container py-4 py-md-5" style="max-width: 920px;">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبتها1</h1>
+            <h1 class="h4 text-white">پنل مدیریت نوبتها2</h1>
             <h2 class="h5 fw-bold mb-1 text-secondary ">امروز، شنبه ۶ مهر</h2>
         </div>
         <div>
@@ -389,6 +389,24 @@
                     // اگه توی صفحه اصلی هستیم، اپ رو ببند
                     App.exitApp();
                 }
+            });
+        }
+    }
+
+</script>
+<script>
+    // ============================================
+    // رفرش خودکار سایت هنگام باز شدن اپ (فقط در Capacitor)
+    // ============================================
+    if (window.Capacitor) {
+        const { App } = window.Capacitor.Plugins;
+
+        if (App) {
+            // رویداد 'resume' وقتی اتفاق می‌افته که اپ از پس‌زمینه به جلو برگرده
+            App.addListener('resume', () => {
+                console.log("[App] اپ از پس‌زمینه برگشت، در حال رفرش...");
+                // رفرش کامل صفحه برای لود کردن آخرین نسخه سایت
+                window.location.reload();
             });
         }
     }
