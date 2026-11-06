@@ -41,7 +41,7 @@
 <div class="container py-4 py-md-5" style="max-width: 920px;">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبتها2</h1>
+            <h1 class="h4 text-white">پنل مدیریت نوبتها۱</h1>
             <h2 class="h5 fw-bold mb-1 text-secondary ">امروز، شنبه ۶ مهر</h2>
         </div>
         <div>
@@ -254,12 +254,12 @@
         نسخه <span  id="appVersion"></span>
     </div>
 </div>
-
 <script src="./app-version.js"></script>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
+
 <script>
     /* ============================================
-       1. مدیریت مودال مشتری (مستقل از Capacitor)
+       1. مدیریت مودال مشتری
        ============================================ */
     const customerModal = document.getElementById('customerModal');
     if (customerModal) {
@@ -297,12 +297,11 @@
         window.addEventListener("appinstalled", () => {
             installButton.hidden = true;
             deferredInstallPrompt = null;
-            console.log("برنامه با موفقیت نصب شد.");
         });
     }
 
     /* ============================================
-       3. ثبت Service Worker (فقط برای مرورگر، نه اپ)
+       3. ثبت Service Worker (فقط برای مرورگر)
        ============================================ */
     if ("serviceWorker" in navigator && !window.Capacitor) {
         window.addEventListener("load", () => {
@@ -313,12 +312,12 @@
     }
 
     /* ============================================
-       4. کدهای مخصوص اپ Capacitor (دکمه Back + مدیریت شبکه)
+       4. کدهای مخصوص اپ Capacitor
        ============================================ */
     if (window.Capacitor) {
-        const { App, Network } = window.Capacitor.Plugins;
+        const { App, Network, WebviewGuardian } = window.Capacitor.Plugins;
 
-        // --- مدیریت دکمه Back گوشی ---
+        // --- مدیریت دکمه Back ---
         if (App) {
             App.addListener('backButton', ({ canGoBack }) => {
                 if (canGoBack) {
@@ -329,11 +328,10 @@
             });
         }
 
-        // --- چک اینترنت و رفرش هوشمند (بدون رفرش صفحه) ---
+        // --- چک اینترنت (فقط برای نمایش پیام) ---
         if (Network) {
             Network.getStatus().then(status => {
                 if (!status.connected) {
-                    // اگه اینترنت قطع بود، پیام مناسب نشون بده
                     document.body.innerHTML = `
                         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#111;color:#e8d9a0;font-family:Vazirmatn,sans-serif;text-align:center;padding:20px;">
                             <i style="font-size:48px;margin-bottom:20px;">📡</i>
@@ -344,6 +342,16 @@
                     `;
                 }
             });
+        }
+
+        // --- مدیریت رفرش خودکار با Guardian ---
+        if (WebviewGuardian) {
+            WebviewGuardian.startMonitoring({
+                foregroundDebounceMs: 500,
+                autoRestart: true,
+                restartStrategy: 'reloadFromOrigin'
+            });
+            console.log("[App] WebviewGuardian فعال شد.");
         }
     }
 </script>
