@@ -41,7 +41,7 @@
 <div class="container py-4 py-md-5" style="max-width: 920px;">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبتها55</h1>
+            <h1 class="h4 text-white">پنل مدیریت نوبتها66</h1>
             <h2 class="h5 fw-bold mb-1 text-secondary ">امروز، شنبه ۶ مهر</h2>
         </div>
         <div>
@@ -256,6 +256,7 @@
 </div>
 <script src="./app-version.js"></script>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
+
 <script>
     /* ============================================
        1. مدیریت مودال مشتری
@@ -300,18 +301,7 @@
     }
 
     /* ============================================
-       3. ثبت Service Worker (فقط برای مرورگر)
-       ============================================ */
-    if ("serviceWorker" in navigator && !window.Capacitor) {
-        window.addEventListener("load", () => {
-            navigator.serviceWorker.register("./sw.js")
-                .then(() => console.log("[Browser] SW ثبت شد."))
-                .catch(err => console.error("[Browser] خطا:", err));
-        });
-    }
-
-    /* ============================================
-       4. کدهای مخصوص اپ Capacitor
+       3. کدهای مخصوص اپ Capacitor
        ============================================ */
     if (window.Capacitor) {
         const { App, Network, ClearWebviewCache } = window.Capacitor.Plugins;
@@ -327,43 +317,40 @@
             });
         }
 
-        // --- حذف Service Workerهای قدیمی (فقط یک بار در هر بار باز شدن اپ) ---
-        if ('serviceWorker' in navigator && !sessionStorage.getItem('sw-cleaned')) {
+        // --- حذف Service Workerهای قدیمی (قبل از هر کاری) ---
+        if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
                 for (let registration of registrations) {
                     registration.unregister();
                     console.log("[App] Service Worker قدیمی حذف شد.");
                 }
-                // علامت بزن که این کار انجام شده تا دوباره تکرار نشه
-                sessionStorage.setItem('sw-cleaned', 'true');
             });
         }
 
-        // --- چک اینترنت و رفرش اجباری (فقط یک بار در هر بار باز شدن اپ) ---
+        // --- چک اینترنت و رفرش اجباری (فقط یک بار) ---
         if (Network && !sessionStorage.getItem('app-refreshed')) {
             Network.getStatus().then(status => {
                 if (status.connected) {
-                    // علامت بزن که رفرش انجام شده
                     sessionStorage.setItem('app-refreshed', 'true');
+
+                    const refreshPage = () => {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('t', Date.now());
+                        window.location.replace(url.toString());
+                    };
 
                     if (ClearWebviewCache) {
                         ClearWebviewCache.clearCache()
                             .then(() => {
                                 console.log("[App] کش پاک شد، رفرش...");
-                                const url = new URL(window.location.href);
-                                url.searchParams.set('t', Date.now());
-                                window.location.replace(url.toString());
+                                refreshPage();
                             })
                             .catch(err => {
                                 console.error("[App] خطا در پاک کردن کش:", err);
-                                const url = new URL(window.location.href);
-                                url.searchParams.set('t', Date.now());
-                                window.location.replace(url.toString());
+                                refreshPage();
                             });
                     } else {
-                        const url = new URL(window.location.href);
-                        url.searchParams.set('t', Date.now());
-                        window.location.replace(url.toString());
+                        refreshPage();
                     }
                 } else {
                     document.body.innerHTML = `
@@ -381,4 +368,5 @@
 </script>
 </body>
 </html>
+
 
