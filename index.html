@@ -41,7 +41,7 @@
 <div class="container py-4 py-md-5" style="max-width: 920px;">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبتها33</h1>
+            <h1 class="h4 text-white">پنل مدیریت نوبتها44</h1>
             <h2 class="h5 fw-bold mb-1 text-secondary ">امروز، شنبه ۶ مهر</h2>
         </div>
         <div>
@@ -256,7 +256,6 @@
 </div>
 <script src="./app-version.js"></script>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
-
 <script>
     /* ============================================
        1. مدیریت مودال مشتری
@@ -328,35 +327,45 @@
             });
         }
 
-        // --- چک اینترنت و رفرش اجباری با پاک کردن کش ---
-        if (Network) {
+        // --- حذف Service Workerهای قدیمی (فقط یک بار در هر بار باز شدن اپ) ---
+        if ('serviceWorker' in navigator && !sessionStorage.getItem('sw-cleaned')) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                    console.log("[App] Service Worker قدیمی حذف شد.");
+                }
+                // علامت بزن که این کار انجام شده تا دوباره تکرار نشه
+                sessionStorage.setItem('sw-cleaned', 'true');
+            });
+        }
+
+        // --- چک اینترنت و رفرش اجباری (فقط یک بار در هر بار باز شدن اپ) ---
+        if (Network && !sessionStorage.getItem('app-refreshed')) {
             Network.getStatus().then(status => {
                 if (status.connected) {
-                    // ۱. اول کش WebView رو پاک کن
+                    // علامت بزن که رفرش انجام شده
+                    sessionStorage.setItem('app-refreshed', 'true');
+
                     if (ClearWebviewCache) {
                         ClearWebviewCache.clearCache()
                             .then(() => {
-                                console.log("[App] کش WebView پاک شد. حالا رفرش می‌کنیم...");
-                                // ۲. حالا صفحه رو با یه پارامتر تصادفی رفرش کن
+                                console.log("[App] کش پاک شد، رفرش...");
                                 const url = new URL(window.location.href);
                                 url.searchParams.set('t', Date.now());
                                 window.location.replace(url.toString());
                             })
                             .catch(err => {
                                 console.error("[App] خطا در پاک کردن کش:", err);
-                                // اگه پاک کردن کش خطا داد، باز هم رفرش کن
                                 const url = new URL(window.location.href);
                                 url.searchParams.set('t', Date.now());
                                 window.location.replace(url.toString());
                             });
                     } else {
-                        // اگه پلاگین نبود، فقط رفرش کن
                         const url = new URL(window.location.href);
                         url.searchParams.set('t', Date.now());
                         window.location.replace(url.toString());
                     }
                 } else {
-                    // اینترنت قطع است
                     document.body.innerHTML = `
                         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#111;color:#e8d9a0;font-family:Vazirmatn,sans-serif;text-align:center;padding:20px;">
                             <i style="font-size:48px;margin-bottom:20px;">📡</i>
@@ -372,3 +381,4 @@
 </script>
 </body>
 </html>
+
