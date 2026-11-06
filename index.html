@@ -41,7 +41,7 @@
 <div class="container py-4 py-md-5" style="max-width: 920px;">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبتها۳</h1>
+            <h1 class="h4 text-white">پنل مدیریت نوبتها22</h1>
             <h2 class="h5 fw-bold mb-1 text-secondary ">امروز، شنبه ۶ مهر</h2>
         </div>
         <div>
@@ -315,7 +315,7 @@
        4. کدهای مخصوص اپ Capacitor
        ============================================ */
     if (window.Capacitor) {
-        const { App, Network, WebviewGuardian } = window.Capacitor.Plugins;
+        const { App, Network, ClearWebviewCache } = window.Capacitor.Plugins;
 
         // --- مدیریت دکمه Back ---
         if (App) {
@@ -328,10 +328,35 @@
             });
         }
 
-        // --- چک اینترنت (فقط برای نمایش پیام) ---
+        // --- چک اینترنت و رفرش اجباری با پاک کردن کش ---
         if (Network) {
             Network.getStatus().then(status => {
-                if (!status.connected) {
+                if (status.connected) {
+                    // ۱. اول کش WebView رو پاک کن
+                    if (ClearWebviewCache) {
+                        ClearWebviewCache.clearCache()
+                            .then(() => {
+                                console.log("[App] کش WebView پاک شد. حالا رفرش می‌کنیم...");
+                                // ۲. حالا صفحه رو با یه پارامتر تصادفی رفرش کن
+                                const url = new URL(window.location.href);
+                                url.searchParams.set('t', Date.now());
+                                window.location.replace(url.toString());
+                            })
+                            .catch(err => {
+                                console.error("[App] خطا در پاک کردن کش:", err);
+                                // اگه پاک کردن کش خطا داد، باز هم رفرش کن
+                                const url = new URL(window.location.href);
+                                url.searchParams.set('t', Date.now());
+                                window.location.replace(url.toString());
+                            });
+                    } else {
+                        // اگه پلاگین نبود، فقط رفرش کن
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('t', Date.now());
+                        window.location.replace(url.toString());
+                    }
+                } else {
+                    // اینترنت قطع است
                     document.body.innerHTML = `
                         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:#111;color:#e8d9a0;font-family:Vazirmatn,sans-serif;text-align:center;padding:20px;">
                             <i style="font-size:48px;margin-bottom:20px;">📡</i>
@@ -343,19 +368,7 @@
                 }
             });
         }
-
-        // --- مدیریت رفرش خودکار با Guardian ---
-        if (WebviewGuardian) {
-            WebviewGuardian.startMonitoring({
-                foregroundDebounceMs: 500,
-                autoRestart: true,
-                restartStrategy: 'reloadFromOrigin'
-            });
-            console.log("[App] WebviewGuardian فعال شد.");
-        }
     }
 </script>
-</body>
-</html>
 </body>
 </html>
