@@ -342,32 +342,34 @@
 </script>
 <script>
     // ============================================
-    // مدیریت Service Worker
+    // مدیریت Service Worker (فقط برای مرورگر)
     // ============================================
     if ("serviceWorker" in navigator) {
-        // اگه داخل اپ Capacitor هستیم، Service Worker رو ثبت نکن
+        // اگه داخل اپ Capacitor هستیم، SW رو ثبت نکن و قبلی رو حذف کن
         if (window.Capacitor) {
-            console.log("[App] داخل Capacitor هستیم، Service Worker ثبت نمی‌شود.");
-            // اگه قبلاً ثبت شده، حذفش کن
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
                 for (let registration of registrations) {
                     registration.unregister();
-                    console.log("[App] Service Worker قدیمی حذف شد.");
+                    console.log("[App] Service Worker حذف شد.");
                 }
             });
         } else {
-            // فقط در مرورگر عادی Service Worker رو ثبت کن
+            // فقط توی مرورگر عادی ثبت کن
             window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("./sw.js")
-                    .then((registration) => {
-                        console.log("[App] Service Worker در مرورگر ثبت شد.");
-                    })
-                    .catch((error) => {
-                        console.error("[App] خطا در ثبت Service Worker:", error);
-                    });
+                navigator.serviceWorker.register("./sw.js")
+                    .then(() => console.log("[Browser] SW ثبت شد."))
+                    .catch(err => console.error("[Browser] خطا:", err));
             });
         }
+    }
+
+    // ============================================
+    // پاک کردن کش WebView (فقط در اپ Capacitor)
+    // ============================================
+    if (window.Capacitor && window.Capacitor.Plugins.ClearWebviewCache) {
+        window.Capacitor.Plugins.ClearWebviewCache.clearCache()
+            .then(() => console.log("[App] کش WebView پاک شد."))
+            .catch(err => console.error("[App] خطا در پاک کردن کش:", err));
     }
 </script>
 <script>
