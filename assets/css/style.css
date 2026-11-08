@@ -33,7 +33,8 @@
 /* ===== پایه ===== */
 body{
     font-family:'Vazirmatn',sans-serif;
-    background:#111;
+    /*background:#111;*/
+    background: #101011;
     color:#eaeaea;
     min-height:100vh;
 }
@@ -121,3 +122,37 @@ body{
     border-color:#c9a227;
 }
 .form-switch .form-check-input:focus{box-shadow:none}
+
+
+
+/* دکمه‌های انتخاب خدمات (خطی -> پر) */
+.btn-outline-gold {
+    background: transparent;
+    border: 1px solid rgba(201,162,39,.5);
+    color: #e8d9a0;
+    border-radius: .7rem;
+    transition: all .2s ease-in-out;
+}
+
+.btn-outline-gold:hover {
+    background: rgba(201,162,39,.1);
+    border-color: #c9a227;
+    color: #fff;
+}
+
+/* وقتی تیک می‌خوره (با کلاس btn-check بوت‌استرپ) */
+.btn-check:checked + .btn-outline-gold {
+    background: #c9a227 !important;
+    border-color: #c9a227 !important;
+    color: #111 !important; /* متن مشکی میشه که روی طلایی خوب دیده بشه */
+}
+
+.btn-check:checked + .btn-outline-gold small {
+    color: #111 !important; /* زمان هم مشکی بشه */
+}
+
+/* برای اینکه وقتی انتخاب شده، هاور هم درست کار کنه */
+/*.btn-check:checked + .btn-outline-gold:hover {*/
+/*    background: #e8d9a0 !important;*/
+/*    border-color: #e8d9a0 !important;*/
+/*}*/
