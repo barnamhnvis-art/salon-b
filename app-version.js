@@ -1,4 +1,4 @@
-window.APP_VERSION = "1.0.0";
+window.APP_VERSION = "1.0.1";
 
 console.log("Salon Manager Version:", window.APP_VERSION);
 
