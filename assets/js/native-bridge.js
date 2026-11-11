@@ -1,5 +1,7 @@
 /* ============================================================
    native-bridge.js
+   منطق مشترک Capacitor در همه صفحات سایت
+   فقط در اپ Capacitor اجرا می‌شود؛ در مرورگر عادی بی‌اثر است
    ============================================================ */
 (function () {
     'use strict';
@@ -25,22 +27,22 @@
        ============================================================ */
     function showOfflineOverlay() {
         if (document.getElementById('offline-overlay')) return;
-        var overlay = document.createElement('div');
-        overlay.id = 'offline-overlay';
-        overlay.style.cssText = [
+        var ov = document.createElement('div');
+        ov.id = 'offline-overlay';
+        ov.style.cssText = [
             'position:fixed','top:0','left:0','width:100%','height:100%',
             'background:#111','color:#e8d9a0','z-index:99999',
             'display:flex','flex-direction:column','align-items:center',
             'justify-content:center','text-align:center','padding:20px',
             'font-family:Tahoma,Vazirmatn,sans-serif'
         ].join(';');
-        overlay.innerHTML =
+        ov.innerHTML =
             '<div style="font-size:48px;margin-bottom:20px;">📡</div>' +
             '<h2 style="margin:0 0 10px;">اتصال اینترنت برقرار نیست</h2>' +
             '<p style="color:#bdbdbd;margin:0 0 12px;">لطفاً اتصال خود را بررسی کنید.</p>' +
             '<button id="offline-retry-btn" style="background:#c9a227;color:#111;border:0;padding:12px 24px;border-radius:8px;font-weight:600;cursor:pointer;">تلاش مجدد</button>' +
             '<p id="offline-retry-msg" style="color:#ff6b6b;margin-top:14px;font-size:14px;min-height:1em;"></p>';
-        document.body.appendChild(overlay);
+        document.body.appendChild(ov);
         var btn = document.getElementById('offline-retry-btn');
         if (btn) btn.addEventListener('click', onRetry);
     }
@@ -50,6 +52,7 @@
         if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
     }
 
+    /* «تلاش مجدد» — اول دسترسی را تست می‌کند، بعد reload */
     function onRetry() {
         var btn = document.getElementById('offline-retry-btn');
         var msg = document.getElementById('offline-retry-msg');
@@ -85,7 +88,7 @@
     }
 
     /* ============================================================
-       4) پاک‌سازی SW قدیمی
+       4) پاک‌سازی Service Worker قدیمی (اگر وجود داشت)
        ============================================================ */
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function (regs) {
@@ -94,15 +97,14 @@
     }
 
     /* ============================================================
-       5) Version-Check — نسخه‌ی اصلاح‌شده
+       5) Version-Check + Cache-Bust
        ------------------------------------------------------------
-       منطق جدید:
-       - window.APP_VERSION = نسخه HTMLی که الان در حال اجراست
-       - fetch(app-version.js) = نسخه واقعی سرور
-       - اگر متفاوت → HTML قدیمی از cache اومده → reload
-       - اگر مساوی → همه چیز تازه است → هیچ کاری نکن
+       - window.APP_VERSION = نسخه‌ی HTMLی که الان اجرا شده (از خود HTML)
+       - version.json      = نسخه‌ی واقعی روی سرور (fetch با cache-bust)
+       - اگر متفاوت  → HTML قدیمی از کش آمده → reload با ?_v=<server>
+       - اگر مساوی   → همه چیز تازه است → فقط لینک‌ها را آماده کن
        ============================================================ */
-    var VERSION_ENDPOINT = './app-version.js';
+    var VERSION_ENDPOINT = './version.json';
     var QUERY_KEY = '_v';
     var CHECK_THROTTLE_MS = 60 * 1000;
 
@@ -114,7 +116,10 @@
     function reloadWithVersion(version) {
         var u = new URL(window.location.href);
         u.searchParams.set(QUERY_KEY, version);
+        /* محافظ ضد loop: اگر URL همین الان همین است، ریلود نکن */
+        if (u.toString() === window.location.href) return false;
         window.location.replace(u.toString());
+        return true;
     }
 
     function rewriteInternalLinks(version) {
@@ -134,38 +139,27 @@
     }
 
     function runVersionCheck(force) {
+        /* throttle: در هر دقیقه فقط یک‌بار (مگر force) */
         var last = 0;
         try { last = parseInt(sessionStorage.getItem('sv_ts') || '0', 10); } catch (e) {}
         if (!force && last && (Date.now() - last < CHECK_THROTTLE_MS)) return;
         try { sessionStorage.setItem('sv_ts', String(Date.now())); } catch (e) {}
 
         fetch(VERSION_ENDPOINT + '?t=' + Date.now(), { cache: 'no-store' })
-            .then(function (r) { return r.text(); })
-            .then(function (text) {
-                var m = text.match(/APP_VERSION\s*=\s*["']([^"']+)["']/);
-                if (!m) return;
-                var serverVersion = m[1];
-                var displayed = window.APP_VERSION;
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var serverVersion = data && data.version;
+                if (!serverVersion) return;
 
-                // اولویت ۱: خود HTML چه نسخه‌ای است؟
-                if (displayed) {
-                    if (displayed !== serverVersion) {
-                        reloadWithVersion(serverVersion);
-                        return;
-                    }
-                    rewriteInternalLinks(serverVersion);
-                    return;
-                }
+                var displayed = window.APP_VERSION || getUrlVersion();
 
-                // Fallback: از URL بپرس
-                var urlV = getUrlVersion();
-                if (urlV === null || urlV !== serverVersion) {
+                if (displayed && displayed !== serverVersion) {
                     reloadWithVersion(serverVersion);
                     return;
                 }
                 rewriteInternalLinks(serverVersion);
             })
-            .catch(function () {});
+            .catch(function () { /* آفلاین یا خطا — رد شو */ });
     }
 
     if (document.readyState === 'loading') {
@@ -174,7 +168,7 @@
         runVersionCheck(false);
     }
 
-    /* بیداری از background → force check */
+    /* بیداری اپ از background → force check */
     if (App && typeof App.addListener === 'function') {
         App.addListener('appStateChange', function (s) {
             if (s && s.isActive) runVersionCheck(true);

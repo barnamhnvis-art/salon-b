@@ -1,8 +1,12 @@
-window.APP_VERSION = "1.0.1";
+/* ============================================================
+   app-version.js
+   فقط نسخه را در صفحه نمایش می‌دهد.
+   منبع نسخه: window.APP_VERSION (که در خود HTML تعریف شده)
+   ============================================================ */
+(function () {
+    var v = window.APP_VERSION || 'unknown';
+    console.log("Salon Manager Version:", v);
 
-console.log("Salon Manager Version:", window.APP_VERSION);
-
-var versionElement = document.getElementById("appVersion");
-if (versionElement) {
-    versionElement.textContent = window.APP_VERSION;
-}
+    var el = document.getElementById("appVersion");
+    if (el) el.textContent = v;
+})();
