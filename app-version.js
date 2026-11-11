@@ -1,4 +1,4 @@
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.0.1";
 
 console.log("Salon Manager Version:", APP_VERSION);
 
