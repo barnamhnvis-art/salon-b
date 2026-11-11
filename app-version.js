@@ -1,10 +1,8 @@
-const APP_VERSION = "1.0.1";
+window.APP_VERSION = "1.0.0";
 
-console.log("Salon Manager Version:", APP_VERSION);
+console.log("Salon Manager Version:", window.APP_VERSION);
 
-const versionElement = document.getElementById("appVersion");
-
-
+var versionElement = document.getElementById("appVersion");
 if (versionElement) {
-    versionElement.textContent = APP_VERSION;
+    versionElement.textContent = window.APP_VERSION;
 }

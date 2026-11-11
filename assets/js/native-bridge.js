@@ -1,9 +1,5 @@
 /* ============================================================
    native-bridge.js
-   منطق مشترک Capacitor در همه صفحات سایت
-   ------------------------------------------------------------
-   - فقط در اپ Capacitor اجرا می‌شود (window.Capacitor)
-   - در مرورگر عادی هیچ اثری ندارد
    ============================================================ */
 (function () {
     'use strict';
@@ -19,11 +15,8 @@
        ============================================================ */
     if (App && typeof App.addListener === 'function') {
         App.addListener('backButton', function (info) {
-            if (info && info.canGoBack) {
-                window.history.back();
-            } else {
-                App.exitApp();
-            }
+            if (info && info.canGoBack) window.history.back();
+            else App.exitApp();
         });
     }
 
@@ -32,7 +25,6 @@
        ============================================================ */
     function showOfflineOverlay() {
         if (document.getElementById('offline-overlay')) return;
-
         var overlay = document.createElement('div');
         overlay.id = 'offline-overlay';
         overlay.style.cssText = [
@@ -42,70 +34,58 @@
             'justify-content:center','text-align:center','padding:20px',
             'font-family:Tahoma,Vazirmatn,sans-serif'
         ].join(';');
-
         overlay.innerHTML =
             '<div style="font-size:48px;margin-bottom:20px;">📡</div>' +
             '<h2 style="margin:0 0 10px;">اتصال اینترنت برقرار نیست</h2>' +
             '<p style="color:#bdbdbd;margin:0 0 12px;">لطفاً اتصال خود را بررسی کنید.</p>' +
             '<button id="offline-retry-btn" style="background:#c9a227;color:#111;border:0;padding:12px 24px;border-radius:8px;font-weight:600;cursor:pointer;">تلاش مجدد</button>' +
             '<p id="offline-retry-msg" style="color:#ff6b6b;margin-top:14px;font-size:14px;min-height:1em;"></p>';
-
         document.body.appendChild(overlay);
-
         var btn = document.getElementById('offline-retry-btn');
         if (btn) btn.addEventListener('click', onRetry);
     }
 
     function hideOfflineOverlay() {
-        var overlay = document.getElementById('offline-overlay');
-        if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        var ov = document.getElementById('offline-overlay');
+        if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
     }
 
-    /* «تلاش مجدد» — اول دسترسی را تست می‌کند، بعد reload */
     function onRetry() {
         var btn = document.getElementById('offline-retry-btn');
         var msg = document.getElementById('offline-retry-msg');
         if (!btn) return;
-
-        var originalText = btn.textContent;
+        var orig = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'در حال بررسی...';
         if (msg) msg.textContent = '';
-
-        var controller = new AbortController();
-        var timer = setTimeout(function () { controller.abort(); }, 5000);
-
-        var testUrl = window.location.origin + window.location.pathname;
-
-        fetch(testUrl, { method: 'HEAD', cache: 'no-store', signal: controller.signal })
-            .then(function () {
-                clearTimeout(timer);
-                window.location.reload();
-            })
+        var ctrl = new AbortController();
+        var timer = setTimeout(function () { ctrl.abort(); }, 5000);
+        fetch(window.location.origin + window.location.pathname,
+            { method: 'HEAD', cache: 'no-store', signal: ctrl.signal })
+            .then(function () { clearTimeout(timer); window.location.reload(); })
             .catch(function () {
                 clearTimeout(timer);
                 btn.disabled = false;
-                btn.textContent = originalText;
+                btn.textContent = orig;
                 if (msg) msg.textContent = 'هنوز به سرور دسترسی نیست — دوباره تلاش کنید';
             });
     }
 
     /* ============================================================
-       3) رصد وضعیت شبکه
+       3) رصد شبکه
        ============================================================ */
     if (Network && typeof Network.getStatus === 'function') {
-        Network.getStatus().then(function (status) {
-            if (!status.connected) showOfflineOverlay();
+        Network.getStatus().then(function (s) {
+            if (!s.connected) showOfflineOverlay();
         }).catch(function () {});
-
-        Network.addListener('networkStatusChange', function (status) {
-            if (status.connected) hideOfflineOverlay();
+        Network.addListener('networkStatusChange', function (s) {
+            if (s.connected) hideOfflineOverlay();
             else showOfflineOverlay();
         });
     }
 
     /* ============================================================
-       4) پاک‌سازی Service Worker قدیمی (اگر وجود داشت)
+       4) پاک‌سازی SW قدیمی
        ============================================================ */
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function (regs) {
@@ -114,24 +94,27 @@
     }
 
     /* ============================================================
-       5) Version-Check + Cache-Bust
+       5) Version-Check — نسخه‌ی اصلاح‌شده
        ------------------------------------------------------------
-       برای آپدیت خودکار HTML در اپ:
-       - app-version.js را با cache-bust می‌خوانیم
-       - اگر نسخه سرور با localStorage متفاوت بود → reload با ?_v=
-       - لینک‌های داخلی هم ?_v= می‌گیرند
+       منطق جدید:
+       - window.APP_VERSION = نسخه HTMLی که الان در حال اجراست
+       - fetch(app-version.js) = نسخه واقعی سرور
+       - اگر متفاوت → HTML قدیمی از cache اومده → reload
+       - اگر مساوی → همه چیز تازه است → هیچ کاری نکن
        ============================================================ */
     var VERSION_ENDPOINT = './app-version.js';
-    var STORAGE_KEY = 'salon_app_version';
     var QUERY_KEY = '_v';
     var CHECK_THROTTLE_MS = 60 * 1000;
 
-    function getStoredVersion() {
-        try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    function getUrlVersion() {
+        try { return new URL(window.location.href).searchParams.get(QUERY_KEY); }
+        catch (e) { return null; }
     }
 
-    function setStoredVersion(v) {
-        try { localStorage.setItem(STORAGE_KEY, v); } catch (e) {}
+    function reloadWithVersion(version) {
+        var u = new URL(window.location.href);
+        u.searchParams.set(QUERY_KEY, version);
+        window.location.replace(u.toString());
     }
 
     function rewriteInternalLinks(version) {
@@ -142,48 +125,44 @@
             if (!raw) continue;
             if (raw.charAt(0) === '#') continue;
             if (/^(mailto:|tel:|javascript:|data:|blob:)/i.test(raw)) continue;
-
             var u;
             try { u = new URL(raw, window.location.href); } catch (e) { continue; }
             if (u.origin !== window.location.origin) continue;
-
             u.searchParams.set(QUERY_KEY, version);
             a.setAttribute('href', u.pathname + u.search + u.hash);
         }
     }
 
     function runVersionCheck(force) {
-        /* throttle: در دقیقه فقط یک‌بار (مگر force) */
-        var lastCheck = 0;
-        try {
-            lastCheck = parseInt(sessionStorage.getItem('salon_version_check_ts') || '0', 10);
-        } catch (e) {}
-        if (!force && lastCheck && (Date.now() - lastCheck < CHECK_THROTTLE_MS)) return;
-        try { sessionStorage.setItem('salon_version_check_ts', String(Date.now())); } catch (e) {}
+        var last = 0;
+        try { last = parseInt(sessionStorage.getItem('sv_ts') || '0', 10); } catch (e) {}
+        if (!force && last && (Date.now() - last < CHECK_THROTTLE_MS)) return;
+        try { sessionStorage.setItem('sv_ts', String(Date.now())); } catch (e) {}
 
         fetch(VERSION_ENDPOINT + '?t=' + Date.now(), { cache: 'no-store' })
             .then(function (r) { return r.text(); })
             .then(function (text) {
                 var m = text.match(/APP_VERSION\s*=\s*["']([^"']+)["']/);
                 if (!m) return;
-
                 var serverVersion = m[1];
-                var storedVersion = getStoredVersion();
+                var displayed = window.APP_VERSION;
 
-                if (storedVersion === null) {
-                    setStoredVersion(serverVersion);
-                } else if (storedVersion !== serverVersion) {
-                    setStoredVersion(serverVersion);
-
-                    var u = new URL(window.location.href);
-                    var oldUrl = u.toString();
-                    u.searchParams.set(QUERY_KEY, serverVersion);
-                    if (u.toString() !== oldUrl) {
-                        window.location.replace(u.toString());
+                // اولویت ۱: خود HTML چه نسخه‌ای است؟
+                if (displayed) {
+                    if (displayed !== serverVersion) {
+                        reloadWithVersion(serverVersion);
                         return;
                     }
+                    rewriteInternalLinks(serverVersion);
+                    return;
                 }
 
+                // Fallback: از URL بپرس
+                var urlV = getUrlVersion();
+                if (urlV === null || urlV !== serverVersion) {
+                    reloadWithVersion(serverVersion);
+                    return;
+                }
                 rewriteInternalLinks(serverVersion);
             })
             .catch(function () {});
@@ -197,8 +176,8 @@
 
     /* بیداری از background → force check */
     if (App && typeof App.addListener === 'function') {
-        App.addListener('appStateChange', function (state) {
-            if (state && state.isActive) runVersionCheck(true);
+        App.addListener('appStateChange', function (s) {
+            if (s && s.isActive) runVersionCheck(true);
         });
     }
 })();
