@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>تنظیمات ساعات کاری | سالن زیبایی لوکس</title>
+    <title>تنظیمات | سالن زیبایی لوکس</title>
 
     <link rel="icon" type="image/png" href="./assets/icons/icon-app1.png">
     <meta name="theme-color" content="#c9a227">
-    <meta name="description" content="تنظیمات ساعات کاری سالن">
+    <meta name="description" content="تنظیمات سالن و ساعات کاری">
     <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,43 +18,65 @@
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
-
-    <style>
-        /* استایل اختصاصی برای کلید روشن/خاموش در تم تیره */
-        .form-switch .form-check-input {
-            background-color: #333;
-            border-color: rgba(255,255,255,.2);
-            cursor: pointer;
-        }
-        .form-switch .form-check-input:checked {
-            background-color: #c9a227;
-            border-color: #c9a227;
-        }
-        .form-switch .form-check-input:focus {
-            box-shadow: none;
-        }
-    </style>
 </head>
 <body>
 
-<div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 80px;">
+<div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 100px;">
 
-    <!-- هدر -->
-    <div class="d-flex align-items-center justify-content-between mb-4">
-        <div class="d-flex align-items-center gap-3">
-            <a href="./index.html" class="btn btn-dark" title="بازگشت">
-                <i class="bi bi-arrow-right gold"></i>
-            </a>
-            <div>
-                <h1 class="h4 text-white mb-1">ساعات کاری</h1>
-                <small class="text-secondary">مدیریت روزها و شیفت‌های سالن</small>
-            </div>
+    <!-- هدر (وسط‌چین با آیکون) -->
+    <div class="d-flex flex-column align-items-center text-center mb-5 position-relative">
+
+        <!-- آیکون و عنوان -->
+        <div class="d-inline-flex align-items-center gap-2 mb-2 mt-2">
+            <i class="bi bi-gear gold fs-4"></i>
+            <span class="gold fw-semibold fs-5">تنظیمات</span>
         </div>
+        <h1 class="h4 text-white mb-1">مدیریت اطلاعات پروفایل و ساعات کاری</h1>
+        <small class="text-secondary">پیکربندی کامل سالن</small>
     </div>
 
     <!-- ============================================ -->
-    <!-- لیست کارت‌های روزهای هفته -->
+    <!-- ۱) بخش اطلاعات آرایشگر (پروفایل) -->
     <!-- ============================================ -->
+    <h6 class="fw-bold text-white mb-3">
+        <i class="bi bi-person-badge gold me-1"></i> اطلاعات پروفایل آرایشگر
+    </h6>
+    <div class="lux-card p-4 mb-5">
+
+        <div class="row g-3">
+            <!-- اسم -->
+            <div class="col-12 col-md-6">
+                <label class="form-label">نام و نام خانوادگی</label>
+                <input type="text" class="form-control" value="سارا احمدی" placeholder="مثلاً سارا احمدی">
+            </div>
+
+            <!-- شماره تماس -->
+            <div class="col-12 col-md-6">
+                <label class="form-label">شماره تماس</label>
+                <input type="tel" class="form-control text-end" value="09121234567" placeholder="09123456789" dir="ltr">
+            </div>
+
+            <!-- آدرس -->
+            <div class="col-12">
+                <label class="form-label">آدرس سالن</label>
+                <input type="text" class="form-control" value="تهران، خیابان ولیعصر، پلاک ۱۲" placeholder="آدرس دقیق سالن">
+            </div>
+
+            <!-- بیو / درباره من (اندازه ثابت و بدون تغییر سایز دستی) -->
+            <div class="col-12">
+                <label class="form-label">بیوگرافی (درباره من)</label>
+                <textarea class="form-control" rows="4" style="resize: none;" placeholder="مثلاً: متخصص رنگ و میکاپ با ۱۰ سال سابقه">متخصص رنگ و میکاپ با بیش از ۱۰ سال سابقه درخشان در بهترین سالن‌های تهران.</textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ۲) بخش ساعات کاری هفته -->
+    <!-- ============================================ -->
+    <h6 class="fw-bold text-white mb-3">
+        <i class="bi bi-clock-history gold me-1"></i> ساعات کاری هفته
+    </h6>
     <div class="row g-3">
 
         <!-- شنبه -->
@@ -67,7 +89,6 @@
                     </div>
                 </div>
 
-                <!-- شیفت اول -->
                 <div class="mb-3">
                     <small class="text-secondary d-block mb-2">شیفت اول</small>
                     <div class="d-flex align-items-center gap-2">
@@ -77,7 +98,6 @@
                     </div>
                 </div>
 
-                <!-- شیفت دوم -->
                 <div class="mt-auto">
                     <small class="text-secondary d-block mb-2">شیفت دوم</small>
                     <div class="d-flex align-items-center gap-2">
@@ -271,9 +291,9 @@
 
     </div>
 
-    <!-- دکمه ذخیره -->
-    <button type="submit" class="btn btn-gold w-100 py-2 mt-4">
-        <i class="bi bi-check2-circle me-1"></i> ذخیره تغییرات
+    <!-- دکمه شناور ذخیره تغییرات -->
+    <button style="bottom: 20px; z-index: 1050; display: flex; align-items: center; justify-content: center;" type="submit" class="btn btn-gold text-center rounded-pill position-fixed start-50 translate-middle-x px-5 py-2">
+        <i class="bi bi-check2-circle ms-1 mt-1"></i> ذخیره تغییرات
     </button>
 
 </div>

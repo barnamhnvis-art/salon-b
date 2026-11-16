@@ -47,10 +47,10 @@
     <!-- هدر -->
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبت‌ها</h1>
-            <h2 class="h5 fw-bold mb-1 text-secondary">
+            <h1 class="h4 text-white mb-1">پنل مدیریت نوبت‌ها</h1>
+            <span class="fs-5 text-secondary">
                 امروز، شنبه ۶ مهر
-            </h2>
+            </span>
         </div>
         <div>
             <button type="button" id="installAppBtn" class="btn btn-dark" hidden>
@@ -68,36 +68,33 @@
     <div class="row g-2 mb-4">
         <div class="col-4">
             <input type="radio" class="btn-check" name="dayFilter" id="filterToday" checked>
-            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 d-flex flex-column align-items-center justify-content-center" for="filterToday">
-                <i class="bi bi-sun fs-6 mb-1"></i>
-                <span class="fw-bold" style="font-size: 0.95rem;">۲</span>
-                <span class="text-nowrap" style="font-size: 0.75rem;">امروز</span>
+            <label class="btn btn-outline-gold w-100 py-1 px-1 text-center h-100 rounded-4" for="filterToday">
+                <span class="fw-bold fs-1">۲</span>
+                <small class="d-block">نوبت های امروز</small>
             </label>
         </div>
         <div class="col-4">
             <input type="radio" class="btn-check" name="dayFilter" id="filterTomorrow">
-            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 d-flex flex-column align-items-center justify-content-center" for="filterTomorrow">
-                <i class="bi bi-cloud-sun fs-6 mb-1"></i>
-                <span class="fw-bold" style="font-size: 0.95rem;">۱</span>
-                <span class="text-nowrap" style="font-size: 0.75rem;">فردا</span>
+            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 rounded-4" for="filterTomorrow">
+                <span class="fw-bold fs-1">۱</span>
+                <small class="d-block">نوبت های فردا </small>
             </label>
         </div>
         <div class="col-4">
             <input type="radio" class="btn-check" name="dayFilter" id="filterDayAfter">
-            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 d-flex flex-column align-items-center justify-content-center" for="filterDayAfter">
-                <i class="bi bi-calendar-event fs-6 mb-1"></i>
-                <span class="fw-bold" style="font-size: 0.95rem;">۱</span>
-                <span class="text-nowrap" style="font-size: 0.75rem;">پس‌فردا</span>
+            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 rounded-4" for="filterDayAfter">
+                <span class="fw-bold fs-1">۱</span>
+                <small class="d-block">نوبت های پس ‌فردا</small>
             </label>
         </div>
     </div>
 
     <!-- کارت بلند مدت (بزرگ‌تر، ثابت و غیرقابل کلیک) -->
-    <div class="lux-card p-3 mb-4 d-flex align-items-center justify-content-between" style="border-color: rgba(201,162,39,.5); background: rgba(201,162,39,.05);">
+    <div class="lux-card px-4 py-3 mb-4 d-flex align-items-center justify-content-between" style="border-color: rgba(201,162,39,.5); background: rgba(201,162,39,.05);">
         <div class="d-flex align-items-center gap-3">
             <i class="bi bi-calendar-week gold fs-3"></i>
             <div>
-                <h5 class="fw-bold text-white mb-0">قرارهای بلند مدت</h5>
+                <h6 class="fw-bold text-white mb-0">قرارهای بلند مدت</h6>
                 <small class="text-secondary">نوبت‌های ثبت شده برای هفته‌های آینده</small>
             </div>
         </div>
@@ -107,7 +104,7 @@
     <!-- ============================================ -->
     <!-- ۲) عنوان لیست (داینامیک) -->
     <!-- ============================================ -->
-    <h6 class="fw-bold text-white mb-3" id="list-title">
+    <h6 class="fw-bold text-white mb-3 mt-5" id="list-title">
         <i class="bi bi-list-task gold me-1"></i> قرارهای امروز
     </h6>
 
@@ -211,16 +208,15 @@
 <div class="position-fixed start-50 translate-middle-x d-flex gap-3" style="bottom: 20px; z-index: 1050;">
 
     <!-- دکمه افزودن نوبت -->
-    <button type="button" class="btn btn-gold rounded-4 shadow d-flex align-items-center justify-content-center"
-            data-bs-toggle="modal" data-bs-target="#addModal"
-            style="width: 110px; height: 45px;">
+    <button type="button" class="btn btn-gold rounded-pill shadow d-flex align-items-center justify-content-center py-0 px-4"
+            data-bs-toggle="modal" data-bs-target="#addModal">
+        <i class="bi bi-plus fs-4 pt-2"></i>
         افزودن نوبت
     </button>
 
 
     <!-- دکمه لینک با آیکون قیچی -->
-    <a href="./manage-services.html" class="btn btn-dark rounded-4 shadow d-flex align-items-center justify-content-center"
-       style="width: 45px; height: 45px;" title="پروفایل و تنظیمات">
+    <a href="./manage-services.html" class="btn btn-dark rounded-4 shadow d-flex align-items-center justify-content-center lux-card" title="پروفایل و تنظیمات">
         <i class="bi bi-scissors gold fs-5"></i>
     </a>
 
@@ -233,9 +229,11 @@
 <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content lux-card">
-            <div class="modal-header border-0 pb-0">
+            <div class="modal-header d-flex justify-content-between border-0 pb-0">
                 <h5 class="fw-bold text-white">ثبت نوبت دستی</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                <div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
             </div>
             <div class="modal-body">
                 <form>
@@ -260,8 +258,8 @@
                             <label class="form-label">ساعت</label>
                             <input type="text" class="form-control" placeholder="۱۰:۰۰">
                         </div>
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-gold w-100 py-2">
+                        <div class="col-12 d-flex justify-content-center mt-5">
+                            <button type="submit" class="btn btn-gold rounded-4  w-50 py-2">
                                 <i class="bi bi-check2-circle me-1"></i> ثبت نوبت
                             </button>
                         </div>

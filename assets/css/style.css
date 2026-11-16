@@ -151,6 +151,20 @@ body{
     color: #111 !important; /* زمان هم مشکی بشه */
 }
 
+/* استایل اختصاصی برای کلید روشن/خاموش در تم تیره */
+.form-switch .form-check-input {
+    background-color: #333;
+    border-color: rgba(255,255,255,.2);
+    cursor: pointer;
+}
+.form-switch .form-check-input:checked {
+    background-color: #c9a227;
+    border-color: #c9a227;
+}
+.form-switch .form-check-input:focus {
+    box-shadow: none;
+}
+
 /* برای اینکه وقتی انتخاب شده، هاور هم درست کار کنه */
 /*.btn-check:checked + .btn-outline-gold:hover {*/
 /*    background: #e8d9a0 !important;*/
