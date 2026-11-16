@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>مدیریت خدمات | سالن زیبایی لوکس</title>
+
+    <link rel="icon" type="image/png" href="./assets/icons/icon-app1.png">
+    <meta name="theme-color" content="#c9a227">
+    <meta name="description" content="مدیریت و افزودن خدمات سالن زیبایی">
+    <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="manifest" href="./manifest.json">
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+
+    <style>
+        /* استایل اختصاصی برای کلید روشن/خاموش در تم تیره */
+        .form-switch .form-check-input {
+            background-color: #333;
+            border-color: rgba(255,255,255,.2);
+            cursor: pointer;
+        }
+        .form-switch .form-check-input:checked {
+            background-color: #c9a227;
+            border-color: #c9a227;
+        }
+        .form-switch .form-check-input:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 100px;">
+
+    <!-- هدر -->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <a href="./settings.html" class="btn btn-dark" title="بازگشت">
+                <i class="bi bi-arrow-right gold"></i>
+            </a>
+            <div>
+                <h1 class="h4 text-white mb-1">مدیریت خدمات</h1>
+                <small class="text-secondary">مدیریت لیست خدمات سالن</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- لیست کارت‌های خدمات -->
+    <!-- ============================================ -->
+    <div class="row g-3">
+
+        <!-- کارت خدمت ۱ -->
+        <div class="col-12 col-md-6">
+            <div class="lux-card p-4 h-100 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-white mb-0">رنگ مو</h5>
+                    <div class="form-check form-switch mb-0">
+                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                </div>
+
+                <div class="text-secondary small mb-1">
+                    <i class="bi bi-clock gold me-1"></i> ۹۰ دقیقه
+                </div>
+                <div class="text-secondary small mb-4">
+                    <i class="bi bi-currency-exchange gold me-1"></i> ۸۵۰,۰۰۰ تومان
+                </div>
+
+                <div class="mt-auto d-flex gap-2">
+                    <button class="btn btn-dark flex-fill py-2" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="bi bi-pencil gold me-1"></i> ویرایش
+                    </button>
+                    <button class="btn btn-danger flex-fill py-2">
+                        <i class="bi bi-trash3 me-1"></i> حذف
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- کارت خدمت ۲ -->
+        <div class="col-12 col-md-6">
+            <div class="lux-card p-4 h-100 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-white mb-0">کوتاهی مو</h5>
+                    <div class="form-check form-switch mb-0">
+                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                </div>
+
+                <div class="text-secondary small mb-1">
+                    <i class="bi bi-clock gold me-1"></i> ۴۵ دقیقه
+                </div>
+                <div class="text-secondary small mb-4">
+                    <i class="bi bi-currency-exchange gold me-1"></i> ۲۵۰,۰۰۰ تومان
+                </div>
+
+                <div class="mt-auto d-flex gap-2">
+                    <button class="btn btn-dark flex-fill py-2" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="bi bi-pencil gold me-1"></i> ویرایش
+                    </button>
+                    <button class="btn btn-danger flex-fill py-2">
+                        <i class="bi bi-trash3 me-1"></i> حذف
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- کارت خدمت ۳ -->
+        <div class="col-12 col-md-6">
+            <div class="lux-card p-4 h-100 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-white mb-0">میکاپ</h5>
+                    <div class="form-check form-switch mb-0">
+                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                    </div>
+                </div>
+
+                <div class="text-secondary small mb-1">
+                    <i class="bi bi-clock gold me-1"></i> ۱۲۰ دقیقه
+                </div>
+                <div class="text-secondary small mb-4">
+                    <i class="bi bi-currency-exchange gold me-1"></i> ۱,۲۰۰,۰۰۰ تومان
+                </div>
+
+                <div class="mt-auto d-flex gap-2">
+                    <button class="btn btn-dark flex-fill py-2" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="bi bi-pencil gold me-1"></i> ویرایش
+                    </button>
+                    <button class="btn btn-danger flex-fill py-2">
+                        <i class="bi bi-trash3 me-1"></i> حذف
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================ -->
+<!-- دکمه شناور (FAB) - افزودن خدمت -->
+<!-- ============================================ -->
+<button type="button" class="btn btn-gold rounded-4 shadow position-fixed start-50 translate-middle-x"
+        data-bs-toggle="modal" data-bs-target="#addServiceModal"
+        style="width: 140px; height: 45px; bottom: 20px; z-index: 1050; display: flex; align-items: center; justify-content: center;">
+    افزودن خدمت
+</button>
+
+<!-- ============================================ -->
+<!-- مودال افزودن خدمت -->
+<!-- ============================================ -->
+<div class="modal fade" id="addServiceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content lux-card">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="fw-bold text-white">افزودن خدمت جدید</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">نام خدمت</label>
+                        <input type="text" class="form-control" placeholder="مثلاً ناخن">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">مدت زمان (دقیقه)</label>
+                        <input type="number" class="form-control" placeholder="۶۰">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">هزینه (تومان)</label>
+                        <input type="number" class="form-control" placeholder="۳۰۰۰۰۰">
+                    </div>
+                    <button type="submit" class="btn btn-gold w-100 py-2">
+                        <i class="bi bi-check2-circle me-1"></i> ثبت خدمت
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- مودال ویرایش خدمت -->
+<!-- ============================================ -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content lux-card">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="fw-bold text-white">ویرایش خدمت</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">نام خدمت</label>
+                        <input type="text" class="form-control" value="رنگ مو">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">مدت زمان (دقیقه)</label>
+                        <input type="number" class="form-control" value="90">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">هزینه (تومان)</label>
+                        <input type="number" class="form-control" value="850000">
+                    </div>
+                    <button type="submit" class="btn btn-gold w-100 py-2">
+                        <i class="bi bi-check2-circle me-1"></i> ذخیره تغییرات
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

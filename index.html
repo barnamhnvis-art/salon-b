@@ -42,149 +42,143 @@
     <script src="assets/js/bridge.js"></script>
 </head>
 <body>
-<div class="container py-4 py-md-5" style="max-width: 920px;">
+<div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 100px;"> <!-- فاصله بیشتر برای دکمه‌های شناور -->
+
+    <!-- هدر -->
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="h4 text-white">پنل مدیریت نوبتها999</h1>
-            <h2 class="h5 fw-bold mb-1 text-secondary "><a class="text-secondary" href="./profile.html">پروفایل</a> امروز، شنبه ۶ مهر</h2>
+            <h1 class="h4 text-white">پنل مدیریت نوبت‌ها</h1>
+            <h2 class="h5 fw-bold mb-1 text-secondary">
+                امروز، شنبه ۶ مهر
+            </h2>
         </div>
         <div>
             <button type="button" id="installAppBtn" class="btn btn-dark" hidden>
                 <i class="bi bi-download gold"></i> نصب برنامه
             </button>
-            <a href="./settings.html"
-               class="btn btn-dark"
-               title="تنظیمات">
+            <a href="./settings.html" class="btn btn-dark" title="تنظیمات">
                 <i class="bi bi-gear gold"></i>
             </a>
         </div>
     </div>
 
     <!-- ============================================ -->
-    <!-- مودال جزئیات مشتری -->
+    <!-- ۱) دکمه‌های فیلتر (تب‌ها) و کارت بلند مدت -->
     <!-- ============================================ -->
-    <div class="modal fade" id="customerModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content lux-card">
-
-                <!-- هدر مودال: اسم مشتری + ساعت -->
-                <div class="modal-header d-block border-0 pb-2">
-                    <div class="d-flex justify-content-between align-items-center gap-3">
-                        <h5 class="fw-bold text-white mb-0" id="modalName"></h5>
-                        <span class="time-chip py-1" id="modalTime"></span>
-                    </div>
-                </div>
-
-                <!-- بدنه: خدمات + شماره تماس -->
-                <div class="modal-body pt-2">
-                    <div class="p-3">
-                        <h5 class="mb-1 gold mb-2">
-                            خدمات:
-                        </h5>
-                        <div class="text-white" id="modalService"></div>
-                    </div>
-                    <hr class="gold">
-                    <div class="p-3 ">
-                        <h5 class="mb-1 gold mb-2">
-                            شماره تماس:
-                        </h5>
-                        <div class="text-white" id="modalPhone"></div>
-                    </div>
-                </div>
-
-                <!-- فوتر: دکمه‌ها -->
-                <div class="modal-footer border-0 d-flex gap-2">
-                    <button type="button" class="btn btn-gold py-2 flex-fill">
-                        <i class="bi bi-check2-circle me-1"></i> تأیید نوبت
-                    </button>
-                    <button type="button" class="btn btn-danger py-2 flex-fill" data-bs-dismiss="modal">
-                        <i class="bi bi-x-circle me-1"></i> لغو نوبت
-                    </button>
-                </div>
-
-            </div>
+    <div class="row g-2 mb-4">
+        <div class="col-4">
+            <input type="radio" class="btn-check" name="dayFilter" id="filterToday" checked>
+            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 d-flex flex-column align-items-center justify-content-center" for="filterToday">
+                <i class="bi bi-sun fs-6 mb-1"></i>
+                <span class="fw-bold" style="font-size: 0.95rem;">۲</span>
+                <span class="text-nowrap" style="font-size: 0.75rem;">امروز</span>
+            </label>
         </div>
-    </div>
-    <!-- کارت‌های آماری -->
-    <div class="row g-3 mb-5">
-        <div class="col-6 col-md-3">
-            <div class="lux-card text-center p-3 h-100">
-                <i class="bi bi-calendar2-check gold fs-4"></i>
-                <div class="stat-num mt-2">۸</div>
-                <small class="text-secondary">نوبت امروز</small>
-            </div>
+        <div class="col-4">
+            <input type="radio" class="btn-check" name="dayFilter" id="filterTomorrow">
+            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 d-flex flex-column align-items-center justify-content-center" for="filterTomorrow">
+                <i class="bi bi-cloud-sun fs-6 mb-1"></i>
+                <span class="fw-bold" style="font-size: 0.95rem;">۱</span>
+                <span class="text-nowrap" style="font-size: 0.75rem;">فردا</span>
+            </label>
         </div>
-        <div class="col-6 col-md-3">
-            <div class="lux-card text-center p-3 h-100">
-                <i class="bi bi-hourglass-split gold fs-4"></i>
-                <div class="stat-num mt-2">۲</div>
-                <small class="text-secondary">در انتظار تأیید</small>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="lux-card text-center p-3 h-100">
-                <i class="bi bi-x-circle gold fs-4"></i>
-                <div class="stat-num mt-2">۱</div>
-                <small class="text-secondary">کنسل شده</small>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="lux-card text-center p-3 h-100">
-                <i class="bi bi-stars gold fs-4"></i>
-                <div class="stat-num mt-2">۲</div>
-                <small class="text-secondary">جای خالی</small>
-            </div>
+        <div class="col-4">
+            <input type="radio" class="btn-check" name="dayFilter" id="filterDayAfter">
+            <label class="btn btn-outline-gold w-100 py-2 px-1 text-center h-100 d-flex flex-column align-items-center justify-content-center" for="filterDayAfter">
+                <i class="bi bi-calendar-event fs-6 mb-1"></i>
+                <span class="fw-bold" style="font-size: 0.95rem;">۱</span>
+                <span class="text-nowrap" style="font-size: 0.75rem;">پس‌فردا</span>
+            </label>
         </div>
     </div>
 
-    <!-- قرارهای امروز -->
-    <h6 class="fw-bold text-white mb-3">
-        <i class="bi bi-sun gold me-1"></i> قرارهای امروز
+    <!-- کارت بلند مدت (بزرگ‌تر، ثابت و غیرقابل کلیک) -->
+    <div class="lux-card p-3 mb-4 d-flex align-items-center justify-content-between" style="border-color: rgba(201,162,39,.5); background: rgba(201,162,39,.05);">
+        <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-calendar-week gold fs-3"></i>
+            <div>
+                <h5 class="fw-bold text-white mb-0">قرارهای بلند مدت</h5>
+                <small class="text-secondary">نوبت‌های ثبت شده برای هفته‌های آینده</small>
+            </div>
+        </div>
+        <span class="badge bg-gold fs-5 rounded-pill px-3 py-2">۲</span>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ۲) عنوان لیست (داینامیک) -->
+    <!-- ============================================ -->
+    <h6 class="fw-bold text-white mb-3" id="list-title">
+        <i class="bi bi-list-task gold me-1"></i> قرارهای امروز
     </h6>
-    <div class="lux-card overflow-hidden mb-5">
-        <!-- قرارهای امروز -->
+
+    <!-- ============================================ -->
+    <!-- ۳) لیست قرارهای کوتاه مدت (تب‌ها) -->
+    <!-- ============================================ -->
+    <div class="lux-card overflow-hidden mb-4">
         <ul class="list-group list-group-flush list-lux p-0">
-            <li class="list-group-item d-flex align-items-center gap-3 py-3"
-                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
-                data-name="سارا احمدی" data-time="۹:۰۰" data-service="رنگ مو" data-phone="۰۹۱۲۱۲۳۴۵۶۷">
-                <span class="time-chip">۹:۰۰</span>
-                <div class="flex-grow-1">
-                    <div class="fw-semibold">سارا احمدی</div>
-                    <small class="text-secondary">رنگ مو</small>
-                </div>
-                <span class="badge badge-lux rounded-pill">تأیید شده</span>
-            </li>
 
-            <li class="list-group-item d-flex align-items-center gap-3 py-3"
-                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
-                data-name="مریم رضایی" data-time="۱۰:۰۰" data-service="کوتاهی مو" data-phone="۰۹۱۳۲۲۲۳۳۳۳">
-                <span class="time-chip">۱۰:۰۰</span>
-                <div class="flex-grow-1">
-                    <div class="fw-semibold">مریم رضایی</div>
-                    <small class="text-secondary">کوتاهی مو</small>
-                </div>
-                <span class="badge badge-lux rounded-pill">تأیید شده</span>
-            </li>
+            <!-- امروز -->
+            <div id="list-today" class="filter-list">
+                <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                    role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                    data-name="سارا احمدی" data-time="۹:۰۰" data-service="رنگ مو" data-phone="۰۹۱۲۱۲۳۴۵۶۷">
+                    <span class="time-chip">۹:۰۰</span>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold">سارا احمدی</div>
+                        <small class="text-secondary">رنگ مو</small>
+                    </div>
+                    <span class="badge badge-lux rounded-pill">تأیید شده</span>
+                </li>
+                <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                    role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                    data-name="مریم رضایی" data-time="۱۰:۰۰" data-service="کوتاهی مو" data-phone="۰۹۱۳۲۲۲۳۳۳۳">
+                    <span class="time-chip">۱۰:۰۰</span>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold">مریم رضایی</div>
+                        <small class="text-secondary">کوتاهی مو</small>
+                    </div>
+                    <span class="badge badge-lux rounded-pill">تأیید شده</span>
+                </li>
+            </div>
 
-            <li class="list-group-item d-flex align-items-center gap-3 py-3"
-                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
-                data-name="فاطمه محمدی" data-time="۱۲:۰۰" data-service="میکاپ" data-phone="۰۹۱۴۵۵۵۶۶۶۶">
-                <span class="time-chip">۱۲:۰۰</span>
-                <div class="flex-grow-1">
-                    <div class="fw-semibold">فاطمه محمدی</div>
-                    <small class="text-secondary">میکاپ</small>
-                </div>
-                <span class="badge badge-lux rounded-pill">تأیید شده</span>
-            </li>
+            <!-- فردا -->
+            <div id="list-tomorrow" class="filter-list d-none">
+                <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                    role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                    data-name="فاطمه محمدی" data-time="۱۲:۰۰" data-service="میکاپ" data-phone="۰۹۱۴۵۵۵۶۶۶۶">
+                    <span class="time-chip">۱۲:۰۰</span>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold">فاطمه محمدی</div>
+                        <small class="text-secondary">میکاپ</small>
+                    </div>
+                    <span class="badge badge-lux rounded-pill">تأیید شده</span>
+                </li>
+            </div>
+
+            <!-- پس‌فردا -->
+            <div id="list-day-after" class="filter-list d-none">
+                <li class="list-group-item d-flex align-items-center gap-3 py-3"
+                    role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
+                    data-name="زهرا کریمی" data-time="۱۴:۰۰" data-service="رنگ مو" data-phone="۰۹۱۶۳۳۳۴۴۴۴">
+                    <span class="time-chip">۱۴:۰۰</span>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold">زهرا کریمی</div>
+                        <small class="text-secondary">رنگ مو</small>
+                    </div>
+                    <span class="badge badge-lux rounded-pill">تأیید شده</span>
+                </li>
+            </div>
+
         </ul>
     </div>
 
-    <!-- قرارهای هفته -->
-    <h6 class="fw-bold text-white mb-3">
-        <i class="bi bi-calendar-week gold me-1"></i> قرارهای هفته
+    <!-- ============================================ -->
+    <!-- ۴) لیست قرارهای بلند مدت (ثابت زیر لیست اصلی) -->
+    <!-- ============================================ -->
+    <h6 class="fw-bold text-white mt-5 mb-3" >
+        <i class="bi bi-list-task gold me-1"></i>  قرارهای بلند مدت
     </h6>
     <div class="lux-card overflow-hidden mb-5">
-        <!-- قرارهای هفته -->
         <ul class="list-group list-group-flush list-lux p-0">
             <li class="list-group-item d-flex align-items-center gap-3 py-3"
                 role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
@@ -196,18 +190,6 @@
                 </div>
                 <span class="badge badge-lux rounded-pill">تأیید شده</span>
             </li>
-
-            <li class="list-group-item d-flex align-items-center gap-3 py-3"
-                role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
-                data-name="زهرا کریمی" data-time="یکشنبه ۳" data-service="رنگ مو" data-phone="۰۹۱۶۳۳۳۴۴۴۴">
-                <span class="time-chip">یکشنبه ۳</span>
-                <div class="flex-grow-1">
-                    <div class="fw-semibold">زهرا کریمی</div>
-                    <small class="text-secondary">رنگ مو</small>
-                </div>
-                <span class="badge badge-lux rounded-pill">تأیید شده</span>
-            </li>
-
             <li class="list-group-item d-flex align-items-center gap-3 py-3"
                 role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
                 data-name="نگار موسوی" data-time="دوشنبه ۱۱" data-service="ناخن" data-phone="۰۹۱۷۷۷۷۸۸۸۸">
@@ -220,39 +202,108 @@
             </li>
         </ul>
     </div>
-    <h6 class="fw-bold text-white mb-3">
-        <i class="bi bi-plus-circle gold me-1"></i> ثبت نوبت دستی
-    </h6>
-    <div class="lux-card p-4">
-        <form>
-            <div class="row g-3">
-                <div class="col-12 col-md-6">
-                    <label class="form-label">نام مشتری</label>
-                    <input type="text" class="form-control" placeholder="مثلاً سارا احمدی">
-                </div>
-                <div class="col-12 col-md-6">
-                    <label class="form-label">شماره تلفن</label>
-                    <input type="text" class="form-control" placeholder="09123456789">
-                </div>
-                <div class="col-12 col-md-6">
-                    <label class="form-label">خدمات</label>
-                    <input type="text" class="form-control" placeholder="مثلاً رنگ مو">
-                </div>
-                <div class="col-6 col-md-6">
-                    <label class="form-label">تاریخ</label>
-                    <input type="text" class="form-control" placeholder="۶ مهر">
-                </div>
-                <div class="col-6 col-md-6">
-                    <label class="form-label">ساعت</label>
-                    <input type="text" class="form-control" placeholder="۱۰:۰۰">
-                </div>
-                <div class="col-12 mt-4">
-                    <button type="submit" class="btn btn-gold w-100">
-                        <i class="bi bi-check2-circle me-1"></i> ثبت نوبت
-                    </button>
+
+</div>
+
+<!-- ============================================ -->
+<!-- دکمه‌های شناور (FAB) - وسط کانتینر -->
+<!-- ============================================ -->
+<div class="position-fixed start-50 translate-middle-x d-flex gap-3" style="bottom: 20px; z-index: 1050;">
+
+    <!-- دکمه افزودن نوبت -->
+    <button type="button" class="btn btn-gold rounded-4 shadow d-flex align-items-center justify-content-center"
+            data-bs-toggle="modal" data-bs-target="#addModal"
+            style="width: 110px; height: 45px;">
+        افزودن نوبت
+    </button>
+
+
+    <!-- دکمه لینک با آیکون قیچی -->
+    <a href="./manage-services.html" class="btn btn-dark rounded-4 shadow d-flex align-items-center justify-content-center"
+       style="width: 45px; height: 45px;" title="پروفایل و تنظیمات">
+        <i class="bi bi-scissors gold fs-5"></i>
+    </a>
+
+
+</div>
+
+<!-- ============================================ -->
+<!-- مودال ثبت نوبت دستی -->
+<!-- ============================================ -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content lux-card">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="fw-bold text-white">ثبت نوبت دستی</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">نام مشتری</label>
+                            <input type="text" class="form-control" placeholder="مثلاً سارا احمدی">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">شماره تلفن</label>
+                            <input type="text" class="form-control" placeholder="09123456789">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">خدمات</label>
+                            <input type="text" class="form-control" placeholder="مثلاً رنگ مو">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">تاریخ</label>
+                            <input type="text" class="form-control" placeholder="۶ مهر">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">ساعت</label>
+                            <input type="text" class="form-control" placeholder="۱۰:۰۰">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-gold w-100 py-2">
+                                <i class="bi bi-check2-circle me-1"></i> ثبت نوبت
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- مودال جزئیات مشتری -->
+<!-- ============================================ -->
+<div class="modal fade" id="customerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content lux-card">
+            <div class="modal-header d-block border-0 pb-2">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <h5 class="fw-bold text-white mb-0" id="modalName"></h5>
+                    <span class="time-chip py-1" id="modalTime"></span>
                 </div>
             </div>
-        </form>
+            <div class="modal-body pt-2">
+                <div class="p-3">
+                    <h5 class="mb-1 gold mb-2">خدمات:</h5>
+                    <div class="text-white" id="modalService"></div>
+                </div>
+                <hr class="gold">
+                <div class="p-3">
+                    <h5 class="mb-1 gold mb-2">شماره تماس:</h5>
+                    <div class="text-white" id="modalPhone"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0 d-flex gap-2">
+                <button type="button" class="btn btn-gold py-2 flex-fill">
+                    <i class="bi bi-check2-circle me-1"></i> تأیید نوبت
+                </button>
+                <button type="button" class="btn btn-danger py-2 flex-fill" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i> لغو نوبت
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -260,8 +311,8 @@
 
 <script>
     /* ============================================
-       1. مدیریت مودال مشتری (مستقل از Capacitor)
-       ============================================ */
+          ۱. مدیریت مودال جزئیات مشتری
+          ============================================ */
     const customerModal = document.getElementById('customerModal');
     if (customerModal) {
         customerModal.addEventListener('show.bs.modal', (event) => {
@@ -273,6 +324,40 @@
             document.getElementById('modalPhone').textContent   = trigger.dataset.phone;
         });
     }
+
+    /* ============================================
+       ۲. مدیریت تب‌ها (فیلتر روزها و تغییر عنوان)
+       ============================================ */
+    const filterToday = document.getElementById('filterToday');
+    const filterTomorrow = document.getElementById('filterTomorrow');
+    const filterDayAfter = document.getElementById('filterDayAfter');
+    const listTitle = document.getElementById('list-title');
+
+    const listToday = document.getElementById('list-today');
+    const listTomorrow = document.getElementById('list-tomorrow');
+    const listDayAfter = document.getElementById('list-day-after');
+
+    function hideAllLists() {
+        document.querySelectorAll('.filter-list').forEach(el => el.classList.add('d-none'));
+    }
+
+    filterToday.addEventListener('change', () => {
+        hideAllLists();
+        listToday.classList.remove('d-none');
+        listTitle.innerHTML = '<i class="bi bi-list-task gold me-1"></i> قرارهای امروز';
+    });
+
+    filterTomorrow.addEventListener('change', () => {
+        hideAllLists();
+        listTomorrow.classList.remove('d-none');
+        listTitle.innerHTML = '<i class="bi bi-list-task gold me-1"></i> قرارهای فردا';
+    });
+
+    filterDayAfter.addEventListener('change', () => {
+        hideAllLists();
+        listDayAfter.classList.remove('d-none');
+        listTitle.innerHTML = '<i class="bi bi-list-task gold me-1"></i> قرارهای پس‌فردا';
+    });
 
     /* ============================================
        2. مدیریت نصب PWA (فقط برای مرورگر)
