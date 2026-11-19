@@ -20,29 +20,18 @@
     <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-
 <div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 100px;">
-
-    <!-- هدر (وسط‌چین بدون دکمه بازگشت) -->
-    <div class="d-flex flex-column align-items-center text-center mb-5">
-
         <!-- آیکون و عنوان -->
-        <div class="d-inline-flex align-items-center gap-2 mb-2">
-            <i class="bi bi-scissors gold fs-4"></i>
-            <span class="gold fw-semibold fs-5">مدیریت خدمات</span>
+        <div class="d-flex gold">
+            <i class="bi bi-scissors fs-4"></i>
+            <h1 class="h4 fw-semibold mt-1">مدیریت خدمات</h1>
         </div>
-
-        <h1 class="h4 text-white mb-1">لیست خدمات سالن</h1>
-        <small class="text-secondary">افزودن، ویرایش و حذف خدمات</small>
-
-    </div>
-
+        <h5 class="text-white">لیست خدمات سالن</h5>
+        <h6 class="text-secondary">افزودن، ویرایش و حذف خدمات</h6>
     <!-- ============================================ -->
     <!-- لیست کارت‌های خدمات -->
     <!-- ============================================ -->
-    <div class="row g-3">
-
-        <!-- کارت خدمت ۱ -->
+    <div class="row g-3 mt-4">
         <div class="col-12 col-md-6">
             <div class="lux-card p-4 h-100 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -51,15 +40,14 @@
                         <input class="form-check-input" type="checkbox" role="switch" checked>
                     </div>
                 </div>
-
-                <div class=" small mb-1">
+                <div class="small mb-1">
                     <i class="bi bi-clock gold"></i>
                     <span class="gold">
                        زمان:
                     </span>
                     ۱۲۰ دقیقه
                 </div>
-                <div class=" small mb-4">
+                <div class="small mb-4">
                     <i class="bi bi-currency-exchange gold"></i>
                     <span class="gold">
                         هزینه:
@@ -76,8 +64,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- کارت خدمت ۲ -->
         <div class="col-12 col-md-6">
             <div class="lux-card p-4 h-100 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -86,14 +72,14 @@
                         <input class="form-check-input" type="checkbox" role="switch" checked>
                     </div>
                 </div>
-                <div class=" small mb-1">
+                <div class="small mb-1">
                     <i class="bi bi-clock gold"></i>
                     <span class="gold">
                        زمان:
                     </span>
                     ۱۲۰ دقیقه
                 </div>
-                <div class=" small mb-4">
+                <div class="small mb-4">
                     <i class="bi bi-currency-exchange gold"></i>
                     <span class="gold">
                         هزینه:
@@ -110,8 +96,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- کارت خدمت ۳ -->
         <div class="col-12 col-md-6">
             <div class="lux-card p-4 h-100 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -120,14 +104,14 @@
                         <input class="form-check-input" type="checkbox" role="switch" checked>
                     </div>
                 </div>
-                <div class=" small mb-1">
+                <div class="small mb-1">
                     <i class="bi bi-clock gold"></i>
                     <span class="gold">
                        زمان:
                     </span>
                     ۱۲۰ دقیقه
                 </div>
-                <div class=" small mb-4">
+                <div class="small mb-4">
                     <i class="bi bi-currency-exchange gold"></i>
                     <span class="gold">
                         هزینه:
@@ -136,7 +120,7 @@
                 </div>
                 <div class="mt-auto d-flex gap-2">
                     <button class="btn btn-dark rounded-4 flex-fill py-2" data-bs-toggle="modal" data-bs-target="#editModal">
-                        <i style="top: 3px" class="bi bi-pencil  ms-1 position-relative "></i> ویرایش
+                        <i style="top: 3px" class="bi bi-pencil ms-1 position-relative "></i> ویرایش
                     </button>
                     <button class="btn btn-outline-danger rounded-4 text-white flex-fill py-2">
                         <i class="bi bi-trash3 me-1"></i> حذف
@@ -144,21 +128,17 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
-
 <!-- ============================================ -->
-<!-- دکمه شناور (FAB) - افزودن خدمت -->
+<!-- دکمه شناور افزودن خدمت -->
 <!-- ============================================ -->
 <button type="button" class="btn btn-gold rounded-pill shadow position-fixed start-50 translate-middle-x py-0 px-4 px-lg-5"
         data-bs-toggle="modal" data-bs-target="#addServiceModal"
-        style=" bottom: 20px; z-index: 1050; display: flex; align-items: center; justify-content: center;">
+        style=" bottom: 20px; z-index: 5; display: flex; align-items: center; justify-content: center;">
     <i class="bi bi-plus fs-4 pt-2"></i>
     افزودن خدمت
 </button>
-
 <!-- ============================================ -->
 <!-- مودال افزودن خدمت -->
 <!-- ============================================ -->
@@ -185,15 +165,16 @@
                         <label class="form-label">هزینه (تومان)</label>
                         <input type="number" class="form-control" placeholder="۳۰۰۰۰۰">
                     </div>
-                    <button type="submit" class="btn btn-gold rounded-4 w-100 py-2">
-                        <i class="bi bi-check2-circle me-1"></i> ثبت خدمت
-                    </button>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button type="submit" class="btn btn-gold rounded-4 w-50 py-2">
+                            <i class="bi bi-check2-circle me-1"></i> ثبت خدمت
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <!-- ============================================ -->
 <!-- مودال ویرایش خدمت -->
 <!-- ============================================ -->
@@ -216,13 +197,15 @@
                         <label class="form-label">مدت زمان (دقیقه)</label>
                         <input type="number" class="form-control" value="90">
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label class="form-label">هزینه (تومان)</label>
                         <input type="number" class="form-control" value="850000">
                     </div>
-                    <button type="submit" class="btn btn-gold rounded-4 mt-3 w-100 py-2">
-                        <i class="bi bi-check2-circle me-1"></i> ذخیره تغییرات
-                    </button>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button type="submit" class="btn btn-gold rounded-4  w-50 py-2">
+                            <i class="bi bi-check2-circle me-1"></i> ذخیره تغییرات
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -23,41 +23,30 @@
     <script src="assets/js/bridge.js"></script>
 </head>
 <body>
-
 <div class="container py-4 py-md-5" style="max-width: 920px;">
-
-    <!-- ============================================ -->
-    <!-- هدر پروفایل -->
-    <!-- ============================================ -->
-
     <!-- هدر پروفایل -->
     <div class="d-flex align-items-center gap-3">
-
-        <!-- آواتار دایره‌ای (وسط‌چین) -->
+        <!-- آواتار دایره‌ای  -->
         <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold fs-4"
              style="width: 80px; height: 80px; border: 2px solid #c9a227; padding: 2px; color: #e8d9a0; background: #1a1a1a;">
             س
         </div>
-
         <!-- اطلاعات اصلی -->
         <div class="flex-grow-1">
             <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h1 class="h5 fw-bold text-white mb-1">سارا احمدی999</h1>
+                <div class="text-end">
+                    <h1 class="h5 fw-bold text-white mb-1">سارا احمدی</h1>
                     <small class="text-secondary d-block" dir="ltr">
                         0912 123 4567
                     </small>
                 </div>
-
                 <!-- دکمه اشتراک‌گذاری -->
-                <button class="btn btn-dark px-2" title="اشتراک‌گذاری">
+                <button class="btn btn-dark px-2 py-1" title="اشتراک‌گذاری">
                     <i class="bi bi-share gold"></i>
                 </button>
             </div>
         </div>
-
     </div>
-
     <!-- تخصص و آدرس -->
     <div class="text-secondary mt-3" style="font-size: 0.8rem;">
         <div class="mb-1">
@@ -67,9 +56,7 @@
             <i class="bi bi-geo-alt gold me-1"></i> تهران، خیابان ولیعصر، پلاک ۱۲
         </div>
     </div>
-
     <hr class="gold">
-
     <!-- ============================================ -->
     <!-- ساعات کاری -->
     <!-- ============================================ -->
@@ -136,9 +123,6 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- نوار مرحله‌ای (Progress Bar) -->
-    <!-- ============================================ -->
     <div class="d-flex align-items-center mt-5 mb-3">
         <hr class="flex-grow-1 gold" style="opacity: 0.3;">
         <span class="px-3 text-white fw-bold">رزرو نوبت</span>
@@ -146,98 +130,87 @@
     </div>
 
     <!-- نوار پیشرفت مراحل -->
-    <!-- نوار پیشرفت مراحل -->
     <div class="d-flex align-items-center mb-4 mx-auto" style="max-width: 500px;">
-
         <!-- مرحله ۱ -->
         <div class="text-center">
-            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-1"
+            <div class="rounded-circle d-flex align-items-center justify-content-center mb-1"
                  id="stepIndicator1" style="width:32px; height:32px; background:#c9a227; color:#111; font-weight:bold; font-size:0.8rem;">
                 ۱
             </div>
             <small class="text-gold" style="font-size:0.7rem;">خدمات</small>
         </div>
-
-        <!-- خط ۱ (وقتی از مرحله ۱ رد شدیم پر میشه) -->
         <!-- خط ۱ (پیش‌فرض خاکستری) -->
         <hr class="flex-grow-1 mx-2 mt-0" id="line1" style="border-top: 2px solid rgba(255,255,255,0.15); opacity: 1;">
-
         <!-- مرحله ۲ -->
         <div class="text-center">
-            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-1 bg-dark border border-secondary"
+            <div class="rounded-circle d-flex align-items-center justify-content-center mb-1 bg-dark border border-secondary"
                  id="stepIndicator2" style="width:32px; height:32px; color:#888; font-weight:bold; font-size:0.8rem;">
                 ۲
             </div>
             <small class="text-secondary" style="font-size:0.7rem;">زمان</small>
         </div>
-
         <!-- خط ۲ (پیش‌فرض خاکستری) -->
         <hr class="flex-grow-1 mx-2 mt-0" id="line2" style="border-top: 2px solid rgba(255,255,255,0.15); opacity: 1;">
-
         <!-- مرحله ۳ -->
         <div class="text-center">
-            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-1 bg-dark border border-secondary"
+            <div class="rounded-circle d-flex align-items-center justify-content-center  mb-1 bg-dark border border-secondary"
                  id="stepIndicator3" style="width:32px; height:32px; color:#888; font-weight:bold; font-size:0.8rem;">
                 ۳
             </div>
             <small class="text-secondary" style="font-size:0.7rem;">اطلاعات</small>
         </div>
-
     </div>
-
     <!-- ============================================ -->
     <!-- فرم چند مرحله‌ای -->
     <!-- ============================================ -->
     <form id="bookingForm">
-
         <!-- ================= مرحله ۱: انتخاب خدمات ================= -->
         <div id="step1" class="step-content">
             <div class="row g-2 mb-4">
                 <div class="col-6 col-md-3">
                     <input type="checkbox" class="btn-check" name="services" id="s1" autocomplete="off">
                     <label class="btn btn-outline-gold w-100 py-3 d-flex justify-content-between align-items-center" for="s1">
-                        <div class="text-start">
-                            <div class="fw-semibold">کوتاهی مو</div>
+                        <span class="text-start">
+                            <span class="d-block fw-semibold">کوتاهی مو</span>
                             <small class="opacity-75" style="font-size:0.7rem;">۴۰ دقیقه</small>
-                        </div>
+                        </span>
                         <span class="fw-semibold" style="font-size:0.85rem;">۵۰۰,۰۰۰</span>
                     </label>
                 </div>
                 <div class="col-6 col-md-3">
                     <input type="checkbox" class="btn-check" name="services" id="s2" autocomplete="off">
                     <label class="btn btn-outline-gold w-100 py-3 d-flex justify-content-between align-items-center" for="s2">
-                        <div class="text-start">
-                            <div class="fw-semibold">رنگ مو</div>
-                            <small class="opacity-75" style="font-size:0.7rem;">۹۰ دقیقه</small>
-                        </div>
-                        <span class="fw-semibold" style="font-size:0.85rem;">۸۵۰,۰۰۰</span>
+              <span class="text-start">
+                            <span class="d-block fw-semibold">کوتاهی مو</span>
+                            <small class="opacity-75" style="font-size:0.7rem;">۴۰ دقیقه</small>
+                        </span>
+                        <span class="fw-semibold" style="font-size:0.85rem;">۵۰۰,۰۰۰</span>
                     </label>
                 </div>
                 <div class="col-6 col-md-3">
                     <input type="checkbox" class="btn-check" name="services" id="s3" autocomplete="off">
                     <label class="btn btn-outline-gold w-100 py-3 d-flex justify-content-between align-items-center" for="s3">
-                        <div class="text-start">
-                            <div class="fw-semibold">میکاپ</div>
-                            <small class="opacity-75" style="font-size:0.7rem;">۱۲۰ دقیقه</small>
-                        </div>
-                        <span class="fw-semibold" style="font-size:0.85rem;">۱,۲۰۰,۰۰۰</span>
+                      <span class="text-start">
+                            <span class="d-block fw-semibold">کوتاهی مو</span>
+                            <small class="opacity-75" style="font-size:0.7rem;">۴۰ دقیقه</small>
+                        </span>
+                        <span class="fw-semibold" style="font-size:0.85rem;">۵۰۰,۰۰۰</span>
                     </label>
                 </div>
                 <div class="col-6 col-md-3">
                     <input type="checkbox" class="btn-check" name="services" id="s4" autocomplete="off">
                     <label class="btn btn-outline-gold w-100 py-3 d-flex justify-content-between align-items-center" for="s4">
-                        <div class="text-start">
-                            <div class="fw-semibold">ناخن</div>
-                            <small class="opacity-75" style="font-size:0.7rem;">۶۰ دقیقه</small>
-                        </div>
-                        <span class="fw-semibold" style="font-size:0.85rem;">۳۰۰,۰۰۰</span>
+             <span class="text-start">
+                            <span class="d-block fw-semibold">کوتاهی مو</span>
+                            <small class="opacity-75" style="font-size:0.7rem;">۴۰ دقیقه</small>
+                        </span>
+                        <span class="fw-semibold" style="font-size:0.85rem;">۵۰۰,۰۰۰</span>
                     </label>
                 </div>
             </div>
-
-            <button type="button" class="btn btn-gold w-50 py-2 m-auto d-block " onclick="nextStep(2)">
-                مرحله بعد <i class="bi bi-arrow-left ms-1"></i>
-            </button>
+                <button type="button" class="btn btn-gold d-block m-auto py-2 w-50 rounded-pill" onclick="nextStep(2)">
+                    مرحله بعد <i style="top: 3px" class="bi bi-arrow-left me-1 fs-5 position-relative"></i>
+                </button>
         </div>
 
         <!-- ================= مرحله ۲: انتخاب روز و ساعت ================= -->
@@ -291,17 +264,15 @@
                     <label class="btn btn-outline-gold w-100 py-2" for="t5">۱۶:۰۰</label>
                 </div>
             </div>
-
             <div class="d-flex gap-2">
-                <button type="button" class="btn btn-dark flex-fill py-2 " onclick="prevStep(1)">
-                    <i class="bi bi-arrow-right me-1"></i> مرحله قبل
+                <button type="button" class="btn btn-dark flex-fill py-2 rounded-pill" onclick="prevStep(1)">
+                    <i style="top: 4px" class="bi bi-arrow-right fs-5 ms-1 position-relative"></i> مرحله قبل
                 </button>
-                <button type="button" class="btn btn-gold flex-fill py-2 " onclick="nextStep(3)">
-                    مرحله بعد <i class="bi bi-arrow-left ms-1"></i>
+                <button type="button" class="btn btn-gold flex-fill py-2 rounded-pill" onclick="nextStep(3)">
+                    مرحله بعد <i style="top: 4px" class="bi bi-arrow-left fs-5 me-1 position-relative"></i>
                 </button>
             </div>
         </div>
-
         <!-- ================= مرحله ۳: اطلاعات مشتری ================= -->
         <div id="step3" class="step-content d-none">
             <div class="row lux-card p-4 mb-4">
@@ -324,11 +295,11 @@
             </div>
 
             <div class="d-flex gap-2">
-                <button type="button" class="btn btn-dark flex-fill py-2" onclick="prevStep(2)">
-                    <i class="bi bi-arrow-right me-1"></i> مرحله قبل
+                <button type="button" class="btn btn-dark flex-fill py-2 rounded-pill" onclick="prevStep(2)">
+                    <i style="top: 4px" class="bi bi-arrow-right ms-1 fs-5 position-relative"></i> مرحله قبل
                 </button>
-                <button type="submit" class="btn btn-gold flex-fill py-2">
-                    <i class="bi bi-check2-circle me-1"></i> ثبت نهایی
+                <button type="submit" class="btn btn-gold flex-fill py-2 rounded-pill">
+                    <i style="top: 3px" class="bi bi-check2-circle ms-1 fs-5 position-relative"></i> ثبت نهایی
                 </button>
             </div>
         </div>

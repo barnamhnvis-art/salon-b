@@ -30,16 +30,13 @@
 
 }
 
-/* ===== پایه ===== */
 body{
     font-family:'Vazirmatn',sans-serif;
-    /*background:#111;*/
     background: #101011;
     color:#eaeaea;
     min-height:100vh;
 }
 
-/* ===== کارت‌ها ===== */
 .lux-card{
     background:#1a1a1a;
     border:1px solid rgba(201,162,39,.2);
@@ -123,9 +120,6 @@ body{
 }
 .form-switch .form-check-input:focus{box-shadow:none}
 
-
-
-/* دکمه‌های انتخاب خدمات (خطی -> پر) */
 .btn-outline-gold {
     background: transparent;
     border: 1px solid rgba(201,162,39,.5);
@@ -133,11 +127,14 @@ body{
     border-radius: .7rem;
     transition: all .2s ease-in-out;
 }
-
-.btn-outline-gold:hover {
-    background: rgba(201,162,39,.1);
-    border-color: #c9a227;
-    color: #fff;
+/* ===== غیرفعال کردن افکت هاور روی دکمه‌های انتخاب خدمات ===== */
+.btn-outline-gold:hover,
+.btn-outline-gold:focus,
+.btn-outline-gold:active {
+    background: transparent !important;
+    color: #e8d9a0 !important;
+    border-color: rgb(255, 194, 0) !important;
+    box-shadow: none !important;
 }
 
 /* وقتی تیک می‌خوره (با کلاس btn-check بوت‌استرپ) */
@@ -164,9 +161,3 @@ body{
 .form-switch .form-check-input:focus {
     box-shadow: none;
 }
-
-/* برای اینکه وقتی انتخاب شده، هاور هم درست کار کنه */
-/*.btn-check:checked + .btn-outline-gold:hover {*/
-/*    background: #e8d9a0 !important;*/
-/*    border-color: #e8d9a0 !important;*/
-/*}*/

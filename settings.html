@@ -20,284 +20,270 @@
     <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-
 <div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 100px;">
-
-    <!-- هدر (وسط‌چین با آیکون) -->
-    <div class="d-flex flex-column align-items-center text-center mb-5 position-relative">
-
         <!-- آیکون و عنوان -->
-        <div class="d-inline-flex align-items-center gap-2 mb-2 mt-2">
+        <div class="mb-1 d-flex align-items-center gap-1">
             <i class="bi bi-gear gold fs-4"></i>
-            <span class="gold fw-semibold fs-5">تنظیمات</span>
+            <h1 class="h4 gold fw-semibold mt-1">تنظیمات</h1>
         </div>
-        <h1 class="h4 text-white mb-1">مدیریت اطلاعات پروفایل و ساعات کاری</h1>
-        <small class="text-secondary">پیکربندی کامل سالن</small>
-    </div>
-
+        <h5 class="text-white mb-5">مدیریت اطلاعات پروفایل و ساعات کاری <a href="./profile.html" class="text-secondary">پروفایل</a> </h5>
     <!-- ============================================ -->
     <!-- ۱) بخش اطلاعات آرایشگر (پروفایل) -->
     <!-- ============================================ -->
     <h6 class="fw-bold text-white mb-3">
         <i class="bi bi-person-badge gold me-1"></i> اطلاعات پروفایل آرایشگر
     </h6>
-    <div class="lux-card p-4 mb-5">
-
+    <form action="#" method="POST">
+        <div class="lux-card p-4 mb-5">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label for="profileName" class="form-label">نام و نام خانوادگی</label>
+                    <input type="text" class="form-control" id="profileName" name="profile_name"
+                           value="سارا احمدی" placeholder="مثلاً سارا احمدی">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="profilePhone" class="form-label">شماره تماس</label>
+                    <input type="tel" class="form-control text-end" id="profilePhone" name="profile_phone"
+                           value="09121234567" placeholder="09123456789" dir="ltr">
+                </div>
+                <div class="col-12">
+                    <label for="profileAddress" class="form-label">آدرس سالن</label>
+                    <input type="text" class="form-control" id="profileAddress" name="profile_address"
+                           value="تهران، خیابان ولیعصر، پلاک ۱۲" placeholder="آدرس دقیق سالن">
+                </div>
+                <div class="col-12">
+                    <label for="profileBio" class="form-label">بیوگرافی (درباره من)</label>
+                    <textarea class="form-control" id="profileBio" name="profile_bio" rows="4"
+                              style="resize: none;"
+                              placeholder="مثلاً: متخصص رنگ و میکاپ با ۱۰ سال سابقه">متخصص رنگ و میکاپ با بیش از ۱۰ سال سابقه درخشان در بهترین سالن‌های تهران.</textarea>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================ -->
+        <!-- ۲) بخش ساعات کاری هفته  -->
+        <!-- ============================================ -->
+        <h6 class="fw-bold text-white mb-3">
+            <i class="bi bi-clock-history gold me-1"></i> ساعات کاری هفته
+        </h6>
         <div class="row g-3">
-            <!-- اسم -->
+
+            <!-- شنبه -->
             <div class="col-12 col-md-6">
-                <label class="form-label">نام و نام خانوادگی</label>
-                <input type="text" class="form-control" value="سارا احمدی" placeholder="مثلاً سارا احمدی">
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">شنبه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="09:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="12:00">
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="16:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="22:00">
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- شماره تماس -->
+            <!-- یکشنبه -->
             <div class="col-12 col-md-6">
-                <label class="form-label">شماره تماس</label>
-                <input type="tel" class="form-control text-end" value="09121234567" placeholder="09123456789" dir="ltr">
-            </div>
-
-            <!-- آدرس -->
-            <div class="col-12">
-                <label class="form-label">آدرس سالن</label>
-                <input type="text" class="form-control" value="تهران، خیابان ولیعصر، پلاک ۱۲" placeholder="آدرس دقیق سالن">
-            </div>
-
-            <!-- بیو / درباره من (اندازه ثابت و بدون تغییر سایز دستی) -->
-            <div class="col-12">
-                <label class="form-label">بیوگرافی (درباره من)</label>
-                <textarea class="form-control" rows="4" style="resize: none;" placeholder="مثلاً: متخصص رنگ و میکاپ با ۱۰ سال سابقه">متخصص رنگ و میکاپ با بیش از ۱۰ سال سابقه درخشان در بهترین سالن‌های تهران.</textarea>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- ============================================ -->
-    <!-- ۲) بخش ساعات کاری هفته -->
-    <!-- ============================================ -->
-    <h6 class="fw-bold text-white mb-3">
-        <i class="bi bi-clock-history gold me-1"></i> ساعات کاری هفته
-    </h6>
-    <div class="row g-3">
-
-        <!-- شنبه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">شنبه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">یکشنبه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="09:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="12:00">
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="09:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="12:00">
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="16:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="22:00">
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="16:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="22:00">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- یکشنبه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">یکشنبه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" checked>
+            <!-- دوشنبه -->
+            <div class="col-12 col-md-6">
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">دوشنبه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="09:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="12:00">
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="09:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="12:00">
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="16:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="22:00">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- دوشنبه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">دوشنبه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="09:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="12:00">
-                    </div>
-                </div>
-
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="16:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="22:00">
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="16:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="22:00">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- سه‌شنبه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">سه‌شنبه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" checked>
+            <!-- سه‌شنبه -->
+            <div class="col-12 col-md-6">
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">سه‌شنبه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="09:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="12:00">
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="09:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="12:00">
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="16:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="22:00">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- چهارشنبه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">چهارشنبه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" checked>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="09:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="12:00">
-                    </div>
-                </div>
-
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="16:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="22:00">
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="16:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="22:00">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- پنجشنبه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">پنجشنبه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" checked>
+            <!-- چهارشنبه -->
+            <div class="col-12 col-md-6">
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">چهارشنبه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="09:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="12:00">
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="16:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="22:00">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="10:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="13:00">
+            <!-- پنجشنبه -->
+            <div class="col-12 col-md-6">
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">پنجشنبه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="10:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="13:00">
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="17:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="23:00">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="17:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="23:00">
+            <!-- جمعه -->
+            <div class="col-12 col-md-6">
+                <div class="lux-card p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">جمعه</h5>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <small class="text-secondary d-block mb-2">شیفت اول</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="10:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="12:00">
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <small class="text-secondary d-block mb-2">شیفت دوم</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="time" class="form-control text-center" value="16:00">
+                            <span class="text-secondary">تا</span>
+                            <input type="time" class="form-control text-center" value="18:00">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- جمعه -->
-        <div class="col-12 col-md-6">
-            <div class="lux-card p-4 h-100 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="fw-bold text-white mb-0">جمعه</h5>
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch">
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <small class="text-secondary d-block mb-2">شیفت اول</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="10:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="12:00">
-                    </div>
-                </div>
-
-                <div class="mt-auto">
-                    <small class="text-secondary d-block mb-2">شیفت دوم</small>
-                    <div class="d-flex align-items-center gap-2">
-                        <input type="time" class="form-control text-center" value="16:00">
-                        <span class="text-secondary">تا</span>
-                        <input type="time" class="form-control text-center" value="18:00">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- دکمه شناور ذخیره تغییرات -->
-    <button style="bottom: 20px; z-index: 1050; display: flex; align-items: center; justify-content: center;" type="submit" class="btn btn-gold text-center rounded-pill position-fixed start-50 translate-middle-x px-5 py-2">
-        <i class="bi bi-check2-circle ms-1 mt-1"></i> ذخیره تغییرات
-    </button>
-
+        <!-- دکمه شناور ذخیره تغییرات -->
+        <button type="submit" class="btn btn-gold text-center rounded-pill position-fixed start-50 translate-middle-x px-5 py-2"
+                style="bottom: 20px; z-index: 1050; display: flex; align-items: center; justify-content: center;">
+            <i class="bi bi-check2-circle ms-1 mt-1"></i> ذخیره تغییرات
+        </button>
+    </form>
 </div>
-
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

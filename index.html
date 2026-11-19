@@ -8,14 +8,13 @@
     <link rel="icon" type="image/png" href="./assets/icons/icon-app1.png">
     <!-- ============================================
      تنظیمات PWA و موبایل
-
      ============================================ -->
 
     <!-- رنگ نوار وضعیت در Android Chrome -->
     <meta name="theme-color" content="#c9a227">
 
     <!-- توضیح اپ (برای موتورهای جستجو و دیالوگ نصب) -->
-    <meta name="description" content="پنل مدیریت نوبت‌های سالن زیبایی">
+    <meta name="description" content="پنل مدیریت نوبت‌های سالن ">
 
     <!-- آیکون برای iOS (Safari) -->
     <link rel="apple-touch-icon" href="./assets/icons/icon-app1.png">
@@ -42,9 +41,7 @@
     <script src="assets/js/bridge.js"></script>
 </head>
 <body>
-<div class="container py-4 py-md-5" style="max-width: 920px; margin-bottom: 100px;"> <!-- فاصله بیشتر برای دکمه‌های شناور -->
-
-    <!-- هدر -->
+<div class="container py-4" style="max-width: 920px; margin-bottom: 100px;">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
             <h1 class="h4 text-white mb-1">پنل مدیریت نوبت‌ها</h1>
@@ -89,7 +86,7 @@
         </div>
     </div>
 
-    <!-- کارت بلند مدت (بزرگ‌تر، ثابت و غیرقابل کلیک) -->
+    <!-- کارت بلند مدت -->
     <div class="lux-card px-4 py-3 mb-4 d-flex align-items-center justify-content-between" style="border-color: rgba(201,162,39,.5); background: rgba(201,162,39,.05);">
         <div class="d-flex align-items-center gap-3">
             <i class="bi bi-calendar-week gold fs-3"></i>
@@ -98,24 +95,20 @@
                 <small class="text-secondary">نوبت‌های ثبت شده برای هفته‌های آینده</small>
             </div>
         </div>
-        <span class="badge bg-gold fs-5 rounded-pill px-3 py-2">۲</span>
+        <span class="badge bg-gold fs-4 rounded-pill px-3 py-2">۲</span>
     </div>
 
-    <!-- ============================================ -->
-    <!-- ۲) عنوان لیست (داینامیک) -->
-    <!-- ============================================ -->
-    <h6 class="fw-bold text-white mb-3 mt-5" id="list-title">
-        <i class="bi bi-list-task gold me-1"></i> قرارهای امروز
-    </h6>
+
 
     <!-- ============================================ -->
     <!-- ۳) لیست قرارهای کوتاه مدت (تب‌ها) -->
     <!-- ============================================ -->
+    <h6 class="fw-bold text-white mb-3 mt-5">
+        <i class="bi bi-list-task gold me-1"></i> قرارهای امروز
+    </h6>
     <div class="lux-card overflow-hidden mb-4">
         <ul class="list-group list-group-flush list-lux p-0">
-
-            <!-- امروز -->
-            <div id="list-today" class="filter-list">
+            <div>
                 <li class="list-group-item d-flex align-items-center gap-3 py-3"
                     role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
                     data-name="سارا احمدی" data-time="۹:۰۰" data-service="رنگ مو" data-phone="۰۹۱۲۱۲۳۴۵۶۷">
@@ -137,38 +130,8 @@
                     <span class="badge badge-lux rounded-pill">تأیید شده</span>
                 </li>
             </div>
-
-            <!-- فردا -->
-            <div id="list-tomorrow" class="filter-list d-none">
-                <li class="list-group-item d-flex align-items-center gap-3 py-3"
-                    role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
-                    data-name="فاطمه محمدی" data-time="۱۲:۰۰" data-service="میکاپ" data-phone="۰۹۱۴۵۵۵۶۶۶۶">
-                    <span class="time-chip">۱۲:۰۰</span>
-                    <div class="flex-grow-1">
-                        <div class="fw-semibold">فاطمه محمدی</div>
-                        <small class="text-secondary">میکاپ</small>
-                    </div>
-                    <span class="badge badge-lux rounded-pill">تأیید شده</span>
-                </li>
-            </div>
-
-            <!-- پس‌فردا -->
-            <div id="list-day-after" class="filter-list d-none">
-                <li class="list-group-item d-flex align-items-center gap-3 py-3"
-                    role="button" data-bs-toggle="modal" data-bs-target="#customerModal"
-                    data-name="زهرا کریمی" data-time="۱۴:۰۰" data-service="رنگ مو" data-phone="۰۹۱۶۳۳۳۴۴۴۴">
-                    <span class="time-chip">۱۴:۰۰</span>
-                    <div class="flex-grow-1">
-                        <div class="fw-semibold">زهرا کریمی</div>
-                        <small class="text-secondary">رنگ مو</small>
-                    </div>
-                    <span class="badge badge-lux rounded-pill">تأیید شده</span>
-                </li>
-            </div>
-
         </ul>
     </div>
-
     <!-- ============================================ -->
     <!-- ۴) لیست قرارهای بلند مدت (ثابت زیر لیست اصلی) -->
     <!-- ============================================ -->
@@ -199,30 +162,22 @@
             </li>
         </ul>
     </div>
-
 </div>
-
 <!-- ============================================ -->
-<!-- دکمه‌های شناور (FAB) - وسط کانتینر -->
+<!-- دکمه‌های شناور  -->
 <!-- ============================================ -->
-<div class="position-fixed start-50 translate-middle-x d-flex gap-3" style="bottom: 20px; z-index: 1050;">
-
+<div class="position-fixed start-50 translate-middle-x d-flex gap-3" style="bottom: 20px; z-index: 5;">
     <!-- دکمه افزودن نوبت -->
-    <button type="button" class="btn btn-gold rounded-pill shadow d-flex align-items-center justify-content-center py-0 px-4"
+    <button type="button" class="btn btn-gold rounded-pill shadow d-flex align-items-center justify-content-center py-0 px-3"
             data-bs-toggle="modal" data-bs-target="#addModal">
         <i class="bi bi-plus fs-4 pt-2"></i>
         افزودن نوبت
     </button>
-
-
     <!-- دکمه لینک با آیکون قیچی -->
-    <a href="./manage-services.html" class="btn btn-dark rounded-4 shadow d-flex align-items-center justify-content-center lux-card" title="پروفایل و تنظیمات">
+    <a href="./manage-services.html" class="btn btn-dark rounded-4 shadow d-flex align-items-center justify-content-center lux-card" title="خدمات">
         <i class="bi bi-scissors gold fs-5"></i>
     </a>
-
-
 </div>
-
 <!-- ============================================ -->
 <!-- مودال ثبت نوبت دستی -->
 <!-- ============================================ -->
@@ -238,11 +193,11 @@
             <div class="modal-body">
                 <form>
                     <div class="row g-3">
-                        <div class="col-12">
+                        <div class="col-6">
                             <label class="form-label">نام مشتری</label>
                             <input type="text" class="form-control" placeholder="مثلاً سارا احمدی">
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <label class="form-label">شماره تلفن</label>
                             <input type="text" class="form-control" placeholder="09123456789">
                         </div>
@@ -269,7 +224,6 @@
         </div>
     </div>
 </div>
-
 <!-- ============================================ -->
 <!-- مودال جزئیات مشتری -->
 <!-- ============================================ -->
@@ -293,20 +247,15 @@
                     <div class="text-white" id="modalPhone"></div>
                 </div>
             </div>
-            <div class="modal-footer border-0 d-flex gap-2">
-                <button type="button" class="btn btn-gold py-2 flex-fill">
-                    <i class="bi bi-check2-circle me-1"></i> تأیید نوبت
-                </button>
-                <button type="button" class="btn btn-danger py-2 flex-fill" data-bs-dismiss="modal">
+            <div class="modal-footer border-0 d-flex justify-content-center mt-4">
+                <button type="button" class="btn btn-outline-danger text-white w-50 py-2 rounded-pill" data-bs-dismiss="modal">
                     <i class="bi bi-x-circle me-1"></i> لغو نوبت
                 </button>
             </div>
         </div>
     </div>
 </div>
-
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
-
 <script>
     /* ============================================
           ۱. مدیریت مودال جزئیات مشتری
@@ -322,40 +271,6 @@
             document.getElementById('modalPhone').textContent   = trigger.dataset.phone;
         });
     }
-
-    /* ============================================
-       ۲. مدیریت تب‌ها (فیلتر روزها و تغییر عنوان)
-       ============================================ */
-    const filterToday = document.getElementById('filterToday');
-    const filterTomorrow = document.getElementById('filterTomorrow');
-    const filterDayAfter = document.getElementById('filterDayAfter');
-    const listTitle = document.getElementById('list-title');
-
-    const listToday = document.getElementById('list-today');
-    const listTomorrow = document.getElementById('list-tomorrow');
-    const listDayAfter = document.getElementById('list-day-after');
-
-    function hideAllLists() {
-        document.querySelectorAll('.filter-list').forEach(el => el.classList.add('d-none'));
-    }
-
-    filterToday.addEventListener('change', () => {
-        hideAllLists();
-        listToday.classList.remove('d-none');
-        listTitle.innerHTML = '<i class="bi bi-list-task gold me-1"></i> قرارهای امروز';
-    });
-
-    filterTomorrow.addEventListener('change', () => {
-        hideAllLists();
-        listTomorrow.classList.remove('d-none');
-        listTitle.innerHTML = '<i class="bi bi-list-task gold me-1"></i> قرارهای فردا';
-    });
-
-    filterDayAfter.addEventListener('change', () => {
-        hideAllLists();
-        listDayAfter.classList.remove('d-none');
-        listTitle.innerHTML = '<i class="bi bi-list-task gold me-1"></i> قرارهای پس‌فردا';
-    });
 
     /* ============================================
        2. مدیریت نصب PWA (فقط برای مرورگر)
@@ -383,7 +298,6 @@
             deferredInstallPrompt = null;
         });
     }
-
 </script>
 </body>
 </html>
